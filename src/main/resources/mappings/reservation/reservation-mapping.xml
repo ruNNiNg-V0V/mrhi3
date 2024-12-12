@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="reservationDAO">
+	
+	<!-- 예약중복체크 -->
+	<select id="checkReservation" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM RESERVATION
+		WHERE USER_ID=#{id}
+	</select>
+	
+	<!-- 초급강습 예약 등록 -->
+	<insert id="beginnerclassReservation">
+		INSERT INTO RESERVATION (
+			RNO, 
+			USER_ID, 
+			COURSE, 
+			RENTAL,
+			OTHER,
+			PERSON,
+			TOTALPAY,
+			RESDAY
+		) VALUES(
+			RESERVATION_SEQ.NEXTVAL, 
+			#{id}, 
+			#{course}, 
+			#{rental},
+			#{other},
+			#{person},
+			#{totalpay},
+			#{resday}
+		)
+	</insert>
+	
+	<!-- 중급강습 예약 등록 -->
+	<insert id="intermediateclassReservation">
+		INSERT INTO RESERVATION (
+			RNO, 
+			USER_ID, 
+			COURSE, 
+			RENTAL,
+			OTHER,
+			PERSON,
+			TOTALPAY,
+			RESDAY
+		) VALUES(
+			RESERVATION_SEQ.NEXTVAL, 
+			#{id}, 
+			#{course}, 
+			#{rental},
+			#{other},
+			#{person},
+			#{totalpay},
+			#{resday}
+		)
+	</insert>
+	
+	<!-- 포인트강습 예약 등록 -->
+	<insert id="pointclassReservation">
+		INSERT INTO RESERVATION (
+			RNO, 
+			USER_ID, 
+			COURSE, 
+			RENTAL,
+			OTHER,
+			PERSON,
+			TOTALPAY,
+			RESDAY
+		) VALUES(
+			RESERVATION_SEQ.NEXTVAL, 
+			#{id}, 
+			#{course}, 
+			#{rental},
+			#{other},
+			#{person},
+			#{totalpay},
+			#{resday}
+		)
+	</insert>
+	
+
+
+</mapper>
