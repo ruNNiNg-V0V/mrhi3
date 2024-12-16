@@ -5,9 +5,9 @@ function getPoster(movieList) {
         const div = document.createElement('div');
         div.className = 'poster' + i;
         container.appendChild(div);
-        
+        const url = "https://api.themoviedb.org/3/search/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&query="
         promises.push(
-            axios.get('https://api.themoviedb.org/3/search/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&query=' + encodeURIComponent(movieList[i]))
+            axios.get(url+ encodeURIComponent(movieList[i]))
                 .then(response => {
                     const json = response.data;
                     if (json.results && json.results.length > 0) {
