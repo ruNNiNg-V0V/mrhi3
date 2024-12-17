@@ -1,5 +1,8 @@
-function getPoster(movieList) {
+function getPoster(simplifiedArray) {
     const container = document.querySelector('.container');
+    let rnumList = simplifiedArray.map(item => item.rnum);
+    let movieCdList = simplifiedArray.map(item => item.movieCd);
+    let movieList = simplifiedArray.map(item => item.movieNm); 
     let promises = [];
     for (let i = 0; i < movieList.length; i++) {
         const div = document.createElement('div');
@@ -12,7 +15,7 @@ function getPoster(movieList) {
                     const json = response.data;
                     if (json.results && json.results.length > 0) {
                         console.log(json);
-                        $('.poster' + i).html(`<p>Your search found: <strong>${json.results[0].title}</strong></p><img src="http://image.tmdb.org/t/p/w500/${json.results[0].poster_path}" class="img-responsive" >`);
+                        $('.poster' + i).html(`<p>Your search found: <strong>${json.results[0].title}</strong></p><a href="reviewPage.do?rnum=${rnumList[i]}&movieCd=${movieCdList[i]}"><img src="http://image.tmdb.org/t/p/w500/${json.results[0].poster_path}" class="img-responsive" ></a>`);
                     } else {
                         return axios.get(`https://api.themoviedb.org/3/search/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&query=goonies`);
                     }
@@ -35,3 +38,4 @@ function getPoster(movieList) {
         console.log('All movie poster requests have been completed.');
     });
 }
+
