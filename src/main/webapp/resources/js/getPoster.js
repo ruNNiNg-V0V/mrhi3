@@ -8,6 +8,7 @@ function getPoster(simplifiedArray) {
         const div = document.createElement('div');
         div.className = 'swiper-slide'
         div.id = 'poster' + i;
+        div.setAttribute('data-title', movieList[i]);
         container.appendChild(div);
         const url = "https://api.themoviedb.org/3/search/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&query="
         promises.push(
