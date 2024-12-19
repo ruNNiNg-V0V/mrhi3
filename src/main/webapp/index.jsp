@@ -7,15 +7,19 @@
 <title>미래시네마</title>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="resources/js/getTrailer.js"></script>
+<script
+	src="resources/js/getTrailer.js?v=<%=System.currentTimeMillis()%>"></script>
 <script src="resources/js/getPoster.js"></script>
 <link rel="stylesheet"
 	href="https://unpkg.com/swiper/swiper-bundle.min.css">
-<link rel="stylesheet" href="resources/css/index.css">
+<link rel="stylesheet" href="resources/css/index.css?after">
+<link rel="stylesheet" href="resources/css/common.css?after">
+
 </head>
 <body>
+	<jsp:include page="header.jsp"></jsp:include>
 	<div id="trailer">
-		<p>!포스터에 마우스를 올려 예고편 확인!</p>
+		<p id="caution">!포스터에 마우스를 올려 예고편 확인!</p>
 	</div>
 	<h1>영화 선택</h1>
 	<div class="swiper-container">
@@ -30,16 +34,16 @@
 	</script>
 	<script src="resources/js/getBoxOffice.js"></script>
 	<script>
-	// 포스터 슬라이드 js
-	var swiper = new Swiper('.swiper-container', {
-		slidesPerView : 4,
-		spaceBetween :4,
-		loop: true,
-		navigation : {
-			nextEl : '.swiper-button-next',
-			prevEl : '.swiper-button-prev',
-		}
-	});
+		// 포스터 슬라이드 js
+		var swiper = new Swiper('.swiper-container', {
+			slidesPerView : 4,
+			spaceBetween : 4,
+			navigation : {
+				nextEl : '.swiper-button-next',
+				prevEl : '.swiper-button-prev',
+			}
+		});
 	</script>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
