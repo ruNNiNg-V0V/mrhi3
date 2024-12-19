@@ -13,11 +13,11 @@
             <div class="header-container">
                 <div class="home-button">
                     <a href="main.html">
-                        <img src="home.svg" alt="메인 홈 버튼"/>
+                        <img src="resources/images/home.svg" alt="메인 홈 버튼"/>
                     </a>
                 </div>
                 <div class="logo">
-                    <img src="images/miraecinema.png" alt="미래시네마 로고">
+                    <img src="resources/img/miraecinema.png" alt="미래시네마 로고">
                 </div>
             </div>
         </header>
