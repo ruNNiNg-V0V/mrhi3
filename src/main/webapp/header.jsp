@@ -7,7 +7,7 @@
             <a href="index.do">Home</a>
         </div>
         <div>
-            <a href="#">Mypage</a>
+            <a href="review.do">Mypage</a>
         </div>
         <div>
             <a href="#">Login</a>
