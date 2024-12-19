@@ -1,0 +1,181 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background-image: linear-gradient(to bottom, #010c16, #0c82f5);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #122639;
+    padding: 15px;
+    padding-top: 20px;
+}
+
+.nav {
+    display: flex;
+}
+
+.nav > div {
+    padding-left: 25px;
+    display: inline-block;
+}
+
+.nav a {
+    color: white;
+}
+
+.nav a:hover {
+    color: gray;
+}
+
+fieldset {
+    display: block;
+    border-left:none;
+    border-right: none;
+    border-bottom: none;
+    border-top:none;
+
+}
+
+.logo {
+    float: left;
+    width: 164px;
+   height: 20px; 
+}
+
+.logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.main img {
+    max-width: 200px;
+    height: auto;
+    margin:0;
+}
+
+.main2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:0 0 20px;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.input-group, .submit-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 200px;
+    height: 34px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: white;
+}
+
+.submit-group {
+    margin-bottom: 15px;
+    justify-content: center;
+
+}
+
+.link-group {
+    text-align: center;
+}
+
+.footer {
+    position: fixed;
+    height: 100px;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #ccc;
+    background-color: white;
+    box-sizing: border-box;
+    padding-left: 20px;
+}
+
+.footer .top-section {
+    display: flex;
+    justify-content: left;
+    gap: 100px;
+    border-bottom: 1px solid #ccc;
+    color: white;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.footer .bottom-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    background-color: white;
+    font-size: 14px;
+}
+
+.btn {
+    width: 290px;
+    height: 45px;
+    font-size: 20px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    margin: 20px
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.btn:hover {
+    background-color: #333;
+}
+
+.btn:active {
+    background-color: blue;
+}
+
+@media (max-width: 768px) {
+    body {
+        width: 100%;
+    }
+    
+    .footer {
+        position: static;
+    }
+}
