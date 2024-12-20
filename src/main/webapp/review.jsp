@@ -6,7 +6,8 @@
     <head>
         <meta charset="UTF-8">
         <title>나의후기</title>
-        <link rel="stylesheet" href="resources/css/movie.css">
+        <link rel="stylesheet" href="resources/css/mypage.css">
+        <link rel="stylesheet" href="resources/css/include.css">
     </head>
     <body>
         <div class="body1">
@@ -16,22 +17,10 @@
             
             <div class="main">
                     
-                <!-- 사이드바 -->
-                <div class="sidebar">
-                    <div class="info">
-                        <h1>MyPage</h1>
-                    </div>
-                    <div class="box1">
-                        <div>userName님 <br> 환영합니다!</div>
-                        <button>회원정보 수정</button>
-                        <button>회원탈퇴</button>
-                    </div>
-                    <div class="box2">
-                        <div class="sidetext2"><a href="#">예매확인/취소</a></div>
-                        <div class="sidetext2"><a href="#">나의 후기</a></div>
-                        <div class="sidetext2"><a href="#">문의하기</a></div>
-                    </div>
-                </div>
+          <div class="main">
+            <!-- 공통 사이드바 -->
+            <jsp:include page="sidebar.jsp" />
+
                 
                       <!-- 콘텐츠 -->
             <div class="box3">
