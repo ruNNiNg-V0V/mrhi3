@@ -21,7 +21,7 @@ public class MemberDAO {
 	private final String MEMBER_GET = "select * from member where id=? and pw=?";
 
 	// 회원 정보 조회
-	public MemberVO getMemeber(MemberVO vo) {
+	public MemberVO getMember(MemberVO vo) {
 		// 회원 정보 조회 결과를 담는 vo
 		MemberVO member = null;
 		try {

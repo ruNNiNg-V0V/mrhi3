@@ -8,16 +8,7 @@
         <link rel="stylesheet" href="login.css"/>
     </head>
     <body>
-        <header class="header">
-            <div class="logo">
-                <img src="resources/images/sidelogo.png" alt="사이드 로고">
-            </div>
-            <div class="nav">
-                <div><a href="#">Home</a></div>
-                <div><a href="#">Mypage</a></div>
-                <div><a href="#">Login</a></div>
-            </div>
-        </header>
+        <jsp:include page="header.jsp"></jsp:include>
         <div class="main-container">
         <div class="main">
             <img src="resources/images/mainlogo.png" alt="미래시네마 로고">
@@ -30,11 +21,11 @@
                 <div class="login-container">
                     <div class="input-group">
                         <img src="resources/images/user.svg" width="32" height="32" alt="사용자 아이콘">
-                        <input type="text" placeholder="ID" name="username">
+                        <input type="text" placeholder="ID" name="id">
                     </div>
                     <div class="input-group">
                         <img src="resources/images/lock.svg" width="32" height="32" alt="잠금 아이콘">
-                        <input type="password" placeholder="Password" name="password">
+                        <input type="password" placeholder="Password" name="pw">
                     </div>
                     <div class="submit-group">
                         <input type="submit" value="Login" class="btn">
@@ -44,22 +35,12 @@
                         <span>|</span>
                         <a href="" class="find-pw">비밀번호 찾기</a>
                         <span>|</span>
-                        <a href="register.html" class="register">회원가입</a>
+                        <a href="register.jsp" class="register">회원가입</a>
                     </div>
                 </div>
             </fieldset>
         </form>
     </div>
-        <div class="footer">
-            <div class="top-section">
-                <a href="#">개인정보처리방침</a>
-                <a href="#">서비스약관</a>
-                <a href="#">사이트맵</a>
-            </div>
-            <div class="bottom-section">
-                <span>© 2024 회사 정보</span>
-                <span>문의전화: 02-1234-5678</span>
-            </div>
-        </div>
+        <jsp:include page="footer.jsp"></jsp:include>
     </body>
 </html>

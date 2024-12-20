@@ -7,10 +7,31 @@
             <a href="index.do">Home</a>
         </div>
         <div>
-            <a href="review.do">Mypage</a>
+        	<%
+       		String id = (String) session.getAttribute("userName");
+       		if(id == null || id == "") {
+       		%>
+            <a href="login.do">Mypage</a>
+       		<%
+       		}else{
+        	%>
+       		<a href="review.do">Mypage</a>
+            <%
+            }
+            %>
         </div>
         <div>
-            <a href="#">Login</a>
+        	<%
+       		if(id == null || id == "") {
+       		%>
+            <a href="login.do">Login</a>            
+       		<%
+       		}else{
+        	%>
+       		<a href="logout.do">Logout</a>
+            <%
+            }
+            %>
         </div>
     </div>
 </div>

@@ -18,7 +18,7 @@ public class ReviewPageController {
 			ModelAndView mav) {
 		vo.setId("mrhi3");
 		vo.setPw("1234");
-		mav.addObject("member", dao_member.getMemeber(vo));
+		mav.addObject("member", dao_member.getMember(vo));
 		mav.addObject("review", dao_review.getReviewsByMember(vo));
 		mav.addObject("ticket", dao_ticket.getTicketsByMember(vo));
 		mav.setViewName("reviewPage.jsp");
