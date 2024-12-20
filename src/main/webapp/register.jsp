@@ -21,7 +21,6 @@
                 </div>
             </div>
         </header>
-            
         <h2>회원 정보 입력</h2>
         <form>
             <fieldset>
