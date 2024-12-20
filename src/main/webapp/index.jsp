@@ -9,7 +9,8 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script
 	src="resources/js/getTrailer.js?v=<%=System.currentTimeMillis()%>"></script>
-<script src="resources/js/getPoster.js?v=<%=System.currentTimeMillis()%>"></script>
+<script
+	src="resources/js/getPoster.js?v=<%=System.currentTimeMillis()%>"></script>
 <link rel="stylesheet"
 	href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <link rel="stylesheet" href="resources/css/index.css?after">
