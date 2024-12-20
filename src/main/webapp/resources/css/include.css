@@ -1,0 +1,79 @@
+/* 전체 배경 설정 */
+.body1 {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, #010c16, #0c82f5);
+}
+
+/* 링크 스타일 초기화 */
+a {
+    text-decoration: none;
+}
+
+/*----------------------헤더 영역--------------------------*/
+.header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #122639;
+    padding: 15px;
+    padding-top: 20px;
+}
+
+.logo {
+    display: inline-block;
+    width: 200px;
+}
+
+.nav {
+    display: flex;
+}
+
+.nav > div {
+    padding-left: 25px;
+    display: inline-block;
+}
+
+.nav a {
+    color: white;
+}
+
+.nav a:hover {
+    color: gray;
+}
+
+/*----------------------헤더 영역 끝--------------------------*/
+
+
+/*----------------------하단바 영역--------------------------*/
+.footer {
+    position: fixed;
+    height: 100px;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #ccc;
+    background-color: white;
+    box-sizing: border-box;
+    padding-left: 20px;
+}
+
+.footer .top-section {
+    display: flex;
+    justify-content: left;
+    gap: 100px;
+    border-bottom: 1px solid #ccc;
+    color: white;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.footer .bottom-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    background-color: white;
+    font-size: 14px;
+}
+/*----------------------하단바 영역 끝--------------------------*/
