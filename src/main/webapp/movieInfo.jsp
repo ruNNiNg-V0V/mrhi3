@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Mirae Cinema - Movie Details</title>
-    <link rel="stylesheet" type="text/css" href="resources/js/ReviewPage.css?after">
+    <link rel="stylesheet" type="text/css" href="resources/css/movieInfo.css?after">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="resources/js/getThePoster.js"></script>
     <script src="resources/js/getMovieInfo.js?v=<%=System.currentTimeMillis()%>"></script>
