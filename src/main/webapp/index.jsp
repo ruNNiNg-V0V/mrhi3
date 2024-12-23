@@ -5,7 +5,8 @@
 <title>Title</title>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="resources/js/getPoster.js"></script>
+<script
+	src="resources/js/getPoster.js?v=<%=System.currentTimeMillis()%>"></script>
 </head>
 <body>
 	<div class="container">
