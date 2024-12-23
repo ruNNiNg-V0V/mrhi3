@@ -12,7 +12,7 @@
         <header class="header">
             <div class="header-container">
                 <div class="home-button">
-                    <a href="main.html">
+                    <a href="index.do">
                         <img src="resources/images/home.svg" alt="메인 홈 버튼"/>
                     </a>
                 </div>
