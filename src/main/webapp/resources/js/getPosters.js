@@ -1,4 +1,4 @@
-function getPoster(simplifiedArray) {
+function getPosters(simplifiedArray) {
     const container = document.querySelector('.swiper-wrapper');
     let rnumList = simplifiedArray.map(item => item.rnum);
     let movieCdList = simplifiedArray.map(item => item.movieCd);
@@ -21,7 +21,7 @@ function getPoster(simplifiedArray) {
                         console.log(json);
                         $('#poster' + i).html(
                             `<p><strong>${rnumList[i]}관</strong></p>
-                            <a href="reviewPage.do?rnum=${rnumList[i]}&movieCd=${movieCdList[i]}"><img src="http://image.tmdb.org/t/p/w500/${json.results[0].poster_path}" class="img-responsive"></a>
+                            <a href="movieInfo.do?rnum=${rnumList[i]}&movieCd=${movieCdList[i]}"><img src="http://image.tmdb.org/t/p/w500/${json.results[0].poster_path}" class="img-responsive"></a>
                             <p><strong>${movieList[i]}</strong></p>`
                         );
                     } else {

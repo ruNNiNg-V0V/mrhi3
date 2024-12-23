@@ -7,8 +7,8 @@
 <title>미래시네마</title>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="resources/js/getTrailer.js"></script>
-<script src="resources/js/getPoster.js"></script>
+<script src="resources/js/getTrailer.js?v=<%=System.currentTimeMillis()%>"></script>
+<script src="resources/js/getPosters.js?v=<%=System.currentTimeMillis()%>"></script>
 <link rel="stylesheet"
 	href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <link rel="stylesheet" href="resources/css/index.css">
@@ -28,7 +28,7 @@
 	<script>
 		
 	</script>
-	<script src="resources/js/getBoxOffice.js"></script>
+	<script src="resources/js/getBoxOffice.js?v=<%=System.currentTimeMillis()%>"></script>
 	<script>
 	// 포스터 슬라이드 js
 	var swiper = new Swiper('.swiper-container', {
