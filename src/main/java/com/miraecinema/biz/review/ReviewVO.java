@@ -4,7 +4,16 @@ public class ReviewVO {
 	String rmvname;
 	String coment;
 	String rtime;
+	String rname;
 	String rid;
+
+	public String getRname() {
+		return rname;
+	}
+
+	public void setRname(String rname) {
+		this.rname = rname;
+	}
 
 	public String getRmvname() {
 		return rmvname;

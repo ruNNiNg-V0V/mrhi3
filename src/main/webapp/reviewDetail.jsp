@@ -31,31 +31,28 @@
 					</div>
 					<%-- <jsp:include page="reviewContent.jsp"> --%>
 					<div class="content">
+					<form method="POST" action="reviewUpdate.do">
 						<table id="review">
 							<thead>
 								<th>영화명</th>
 								<th width="40%">내용</th>
 								<th>작성시간</th>
-								<th>수정/삭제하기</th>
+								<th>수정/뒤로가기</th>
 							</thead>
-						</table>
-						<c:forEach items="${review }" var="theReview" >
-							<form action="reviewDetail.do" method="POST" accept-charset="UTF-8">
-							<table id="review">
 								<tr>
-									<td><input type="text" name="rmvname"
-										value="${theReview.rmvname }" readonly></td>
-									<td width="40%"><input type="text" name="coment"
-										value="${theReview.coment }" readonly></td>
-									<td><input type="text" name="rtime"
-										value="${theReview.rtime }" readonly></td>
-									<td><button type="submit" class="confirmBtn">수정</button>
+									<td>${inReview.rmvname }
+										<input type="hidden" name="rmvname" value="${inReview.rmvname }"></td>
+									<td width="40%">
+										<textarea style="resize: none;" rows="12" maxlength="200"
+										name="coment" placeholder="최대 200자">${inReview.coment }</textarea></td>
+									<td>${inReview.rtime }
+										<input type="hidden" name="rtime" value="${inReview.rtime }"></td>
+									<td><button type="submit" id="update" class="confirmBtn">수정</button>
 										<button id="back" class="confirmBtn" onclick="event.preventDefault(); 
-										location.href='reviewDelete.do?rmvname=${theReview.rmvname}&rtime=${theReview.rtime}'">삭제</button></td>
+										location.href='review.do?'">뒤로</button></td>
 								</tr>
-							</table>
-							</form>
-						</c:forEach>
+						</table>
+					</form>
 					</div>
 				</div>
 			</div>

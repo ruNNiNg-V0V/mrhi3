@@ -8,12 +8,46 @@
 <title>미리보기 페이지</title>
 </head>
 <body>
+
+	<div class="header">
+		<div class="logo">
+			<img src="resources/img/miraecinema.png" height="25px">
+		</div>
+		<div class="nav">
+			<div>
+				<a href="index.do">Home</a>
+			</div>
+			<div>
+				<a href="review.do">Mypage</a>
+			</div>
+			<div>
+				<% 
+					String name = (String) session.getAttribute("name");
+					if(name!=null){
+					%>
+				<a href="#">${name}</a>
+				<%						
+					}else{
+						%>
+				<a href="login.do">Login</a>
+				<%		
+					}
+				%>
+			</div>
+		</div>
+	</div>
+
+
 	<h1>회원 정보</h1>
 	<p>회원 ID : ${member.id}</p>
 	<br>
 	<p>회원 PW : ${member.pw}</p>
 	<br>
 	<p>회원 EMAIL : ${member.email}</p>
+	<br>
+	<p>회원 TEL : ${member.tel}</p>
+	<br>
+	<p>회원명 : ${member.name}</p>
 	<br>
 	<h1>리뷰 정보</h1>
 	<c:forEach items="${review }" var="theReview">
@@ -25,6 +59,9 @@
 		<p>
 			<br>
 		<p>작성 시간 : ${theReview.rtime }
+		<p>
+			<br>
+		<p>작성자 : ${theReview.rname }
 		<p>
 			<br>
 		<p>작성자 ID : ${theReview.rid }
@@ -50,6 +87,9 @@
 		<p>
 			<br>
 		<p>예매 시간 : ${theTicket.ttime }
+		<p>
+			<br>
+		<p>예매자 : ${theTicket.tname }
 		<p>
 			<br>
 		<p>예매자 ID : ${theTicket.tid }
