@@ -18,10 +18,10 @@ public class LoginController {
 	
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public String login(MemberVO vo, MemberDAO dao_member, HttpSession session) {
-		MemberVO user = dao_member.getMember(vo);
+		MemberVO member = dao_member.getMember(vo);
 		
-		if (user != null) {
-			session.setAttribute("userName", user.getId());
+		if (member != null) {
+			session.setAttribute("member", member);
 			return "index.do";
 		} else
 			return "login.jsp";

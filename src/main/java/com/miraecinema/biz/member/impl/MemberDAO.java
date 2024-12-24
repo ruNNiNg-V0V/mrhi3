@@ -35,6 +35,8 @@ public class MemberDAO {
 				member.setId(rs.getString("ID"));
 				member.setPw(rs.getString("PW"));
 				member.setEmail(rs.getString("EMAIL"));
+				member.setTel(rs.getString("TEL"));
+				member.setName(rs.getString("NAME"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

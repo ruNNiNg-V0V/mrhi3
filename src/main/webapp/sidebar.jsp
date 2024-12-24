@@ -6,7 +6,7 @@
     </div>
     <div class="box1">
         <!-- 아직 구현되지 않은 버튼 -->
-        <div>${userName}님 <br> 환영합니다!</div>
+        <div>${member.name}님 <br> 환영합니다!</div>
         <button >회원정보 수정</button>
         <button >회원탈퇴</button>
     </div>
