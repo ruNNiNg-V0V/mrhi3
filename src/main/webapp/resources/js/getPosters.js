@@ -21,7 +21,13 @@ function getPosters(simplifiedArray) {
                         console.log(json);
                         $('#poster' + i).html(
                             `<p><strong>${rnumList[i]}관</strong></p>
-                            <a href="movieInfo.do?rnum=${rnumList[i]}&movieCd=${movieCdList[i]}"><img src="http://image.tmdb.org/t/p/w500/${json.results[0].poster_path}" class="img-responsive"></a>
+                        		<form id="movieForm${i}" action="movieInfo.do" method="POST">
+                        			<input type="hidden" name="rnum" value="${rnumList[i]}">
+                        			<input type="hidden" name="movieCd" value="${movieCdList[i]}">
+                        			<a href="javascript:void(0);" onclick="submitForm('movieForm${i}')">
+                        				<img src="http://image.tmdb.org/t/p/w500/${json.results[0].poster_path}" class="img-responsive" data-title="${movieList[i]}">
+                        			</a>
+                        		</form>
                             <p><strong>${movieList[i]}</strong></p>`
                         );
                     } else {
@@ -59,4 +65,8 @@ function getPosters(simplifiedArray) {
             });
         });
     });
+}
+
+function submitForm(formId) {
+    document.getElementById(formId).submit();
 }

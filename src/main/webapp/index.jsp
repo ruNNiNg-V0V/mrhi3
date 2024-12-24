@@ -33,7 +33,6 @@
 	// 포스터 슬라이드 js
 	var swiper = new Swiper('.swiper-container', {
 		slidesPerView : 4,
-		spaceBetween :4,
 		loop: true,
 		navigation : {
 			nextEl : '.swiper-button-next',
