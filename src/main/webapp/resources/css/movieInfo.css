@@ -1,22 +1,10 @@
-/* Ask why gradation is not working (body color)
-
-Notion Uniform CSS
-
-.body1 {
+body {
     margin: 0;
-    padding: 0;
+    padding: 20px;
     width: 100%;
     height: 100vh;
+    color: #2866A2;
     background-image: linear-gradient(to bottom, #010c16, #0c82f5);
-}
-
-*/
-
-
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #001a33, #005580);
-    color: white;
 }
     
 .header {
@@ -76,7 +64,7 @@ body {
     font-size: 14px;
 }
 
-poster {
+.poster {
 	order: 1;
     flex: 0 0 auto; 
     max-width: 200px; 
@@ -102,6 +90,7 @@ poster {
 
 .details p {
     margin: 5px 0;
+    font-weight: bold;
 }
 
 .reserve-btn {

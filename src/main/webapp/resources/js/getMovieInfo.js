@@ -13,12 +13,12 @@ function getMovieInfo(movieCd) {
             const movieNm = movieInfo.movieNm; // 영화 제목
             const prdtYear = movieInfo.prdtYear; // 영화 제작 연도
             const showTm = movieInfo.showTm; // 상영 시간
-            const directors = movieInfo.directors.map(director => director.peopleNm).join(", "); // 영화 감독 (comma-separated)
-            const actors = movieInfo.actors.map(actor => actor.peopleNm).join(", "); // 주연 정보 (comma-separated)
-            const companys = movieInfo.companys.map(company => company.companyNm).join(", "); // 영화사 (comma-separated)
-            const audits = movieInfo.audits.map(audit => audit.watchGradeNm).join(", "); // 영화 등급 (comma-separated)
+            const directors = movieInfo.directors.map(director => director.peopleNm).join(", "); // 영화 감독 (,)
+            const actors = movieInfo.actors.map(actor => actor.peopleNm).join(", "); // 주연 정보 (,)
+            const companys = [...new Set(movieInfo.companys.map(company => company.companyNm))].join(", "); // 영화사 (unique)(,)
+            const audits = movieInfo.audits.map(audit => audit.watchGradeNm).join(", "); // 영화 등급 (,)
 
-            //fetching
+            // fetching
             document.querySelector('.details h1').textContent = `영화 제목: ${movieNm}`;
             document.querySelector('.details p:nth-child(2)').textContent = `제작 연도: ${prdtYear}`;
             document.querySelector('.details p:nth-child(3)').textContent = `상영 시간: ${showTm}분`;
