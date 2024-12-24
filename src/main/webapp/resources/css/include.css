@@ -59,9 +59,9 @@ a {
 }
 
 .footer .top-section {
-    display: flex;
+    display: center;
     justify-content: left;
-    gap: 100px;
+    gap: 500px;
     border-bottom: 1px solid #ccc;
     color: white;
     padding: 10px 0;
@@ -72,6 +72,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
     color: black;
     background-color: white;
     font-size: 14px;
