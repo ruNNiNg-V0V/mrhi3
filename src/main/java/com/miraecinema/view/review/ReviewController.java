@@ -21,8 +21,8 @@ public class ReviewController {
 	//마이페이지 리뷰내역 리스트 o
 	@RequestMapping("/review.do")
 	public ModelAndView review(MemberVO vo, MemberDAO dao_member, ReviewDAO dao_review, ModelAndView mav, HttpSession session) {
-		String userId = (String) session.getAttribute("userId");
-		vo.setId(userId);
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		vo.setId(member.getId());
 		mav.addObject("review", dao_review.getReviewsByMember(vo));
 		mav.setViewName("review.jsp");
 		System.out.println("review.do");
@@ -32,8 +32,8 @@ public class ReviewController {
 	//마이페이지 리뷰내역 상세 o
 	@RequestMapping(value="/reviewDetail.do", method=RequestMethod.POST)
 	public ModelAndView reviewDetail(ReviewVO vo, ReviewDAO dao_review, ModelAndView mav, HttpSession session) {
-		String userId = (String) session.getAttribute("userId");
-		vo.setRid(userId);
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		vo.setRid(member.getId());
 		mav.addObject("inReview", dao_review.getReview(vo));
 		mav.setViewName("reviewDetail.jsp");
 		System.out.println("reviewDetail.do");
@@ -43,8 +43,8 @@ public class ReviewController {
 	//마이패이지 리뷰내용 수정 o
 	@RequestMapping(value="/reviewUpdate.do", method=RequestMethod.POST)
 	public String reviewUpdate(ReviewVO vo, ReviewDAO dao_review, HttpSession session) {
-		String userId = (String) session.getAttribute("userId");
-		vo.setRid(userId);
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		vo.setRid(member.getId());
 		String rmvname = vo.getRmvname();
 		String coment =  vo.getComent();
 		String rtime = vo.getRtime();
@@ -56,11 +56,8 @@ public class ReviewController {
 	//마이페이지 리뷰내용 삭제 o
 	@RequestMapping(value="/reviewDelete.do", method=RequestMethod.GET)
 	public String reviewDelete(ReviewVO vo, ReviewDAO dao_review, HttpSession session) {
-		String userId = (String) session.getAttribute("userId");
-		String rmvname = vo.getRmvname();
-		String rtime = vo.getRtime();
-		vo.setRid(userId);
-		System.out.println("영화 이름 : "+rmvname+", 작성시간 : "+rtime);
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		vo.setRid(member.getId());
 		dao_review.deleteReview(vo);
 		System.out.println("reviewDelete.do");
 		return "review.do";
