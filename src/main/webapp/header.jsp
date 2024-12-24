@@ -15,7 +15,7 @@
        		<%
        		}else{
         	%>
-       		<a href="review.do">Mypage</a>
+       		<a href="tickets.do">Mypage</a>
             <%
             }
             %>
