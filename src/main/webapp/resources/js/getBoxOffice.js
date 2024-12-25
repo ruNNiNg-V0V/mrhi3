@@ -50,7 +50,7 @@ function getBoxOfMovies(){
             // movieList = simplifiedArray.map(item => item.movieNm);
             // getPoster에서 처리
 
-            getPoster(simplifiedArray)
+            getPosters(simplifiedArray)
         })
         .catch(error => {
             console.error('Error fetching data:', error);

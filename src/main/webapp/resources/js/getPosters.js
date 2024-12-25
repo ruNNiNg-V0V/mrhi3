@@ -1,4 +1,4 @@
-function getPoster(simplifiedArray) {
+function getPosters(simplifiedArray) {
     const container = document.querySelector('.swiper-wrapper');
     let rnumList = simplifiedArray.map(item => item.rnum);
     let movieCdList = simplifiedArray.map(item => item.movieCd);
@@ -9,7 +9,9 @@ function getPoster(simplifiedArray) {
         const div = document.createElement('div');
         div.className = 'swiper-slide';
         div.id = 'poster' + i;
+        div.setAttribute('data-title', movieList[i]);
         container.appendChild(div);
+
         const url = "https://api.themoviedb.org/3/search/movie?api_key=15d2ea6d0dc1d476efbca3eba2b9bbfb&query=";
         promises.push(
             axios.get(url + encodeURIComponent(movieList[i]))
@@ -19,7 +21,13 @@ function getPoster(simplifiedArray) {
                         console.log(json);
                         $('#poster' + i).html(
                             `<p><strong>${rnumList[i]}관</strong></p>
-                            <a href="reviewPage.do?rnum=${rnumList[i]}&movieCd=${movieCdList[i]}"><img src="http://image.tmdb.org/t/p/w500/${json.results[0].poster_path}" class="img-responsive" data-title="${movieList[i]}"></a>
+                        		<form id="movieForm${i}" action="movieInfo.do" method="POST">
+                        			<input type="hidden" name="rnum" value="${rnumList[i]}">
+                        			<input type="hidden" name="movieCd" value="${movieCdList[i]}">
+                        			<a href="javascript:void(0);" onclick="submitForm('movieForm${i}')">
+                        				<img src="http://image.tmdb.org/t/p/w500/${json.results[0].poster_path}" class="img-responsive" data-title="${movieList[i]}">
+                        			</a>
+                        		</form>
                             <p><strong>${movieList[i]}</strong></p>`
                         );
                     } else {
@@ -45,7 +53,7 @@ function getPoster(simplifiedArray) {
         let lastEventTime = 0;
         const eventDelay = 3000; // 이벤트 비활성화 시간 (밀리초)
 
-        const slides = document.querySelectorAll('.img-responsive');
+        const slides = document.querySelectorAll('.swiper-slide');
         slides.forEach(slide => {
             slide.addEventListener('mouseover', function() {
                 const currentTime = new Date().getTime();
@@ -57,4 +65,8 @@ function getPoster(simplifiedArray) {
             });
         });
     });
+}
+
+function submitForm(formId) {
+    document.getElementById(formId).submit();
 }
