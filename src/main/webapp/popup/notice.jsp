@@ -1,4 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<style>
+body {
+	margin: 0;
+	padding: 20px;
+	font-family: Arial, sans-serif;
+	background-color: #122639;
+}
+
+h1 {
+	margin: 0 0 15px 0;
+	color: Aquamarine;
+}
+strong{
+	margin: 0 0 15px 0;
+	color: Aquamarine;
+}
+
+hr {
+	border: none;
+	border-top: 1px solid #eee;
+	margin: 15px 0;
+	color: Aquamarine;
+}
+
+p {
+	padding: 0 10px;
+	color: white;
+}
+</style>
 <h1>12월 시스템 점검 공지</h1>
 <hr>
 <p>

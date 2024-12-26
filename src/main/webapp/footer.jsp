@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <title>Footer</title>
     <link rel="stylesheet" href="resources/include.css">
-    <script>
-        function openPopup(type) {
-            // 새로운 창을 열고 URL에 type을 전달
-            window.open(`/popup/${type}`, '_blank', 'width=600,height=400,scrollbars=yes');
-        }
+ <script>
+ function openPopup(type) {
+	    const url = "/biz/popup/" + type + ".jsp";
+	    window.open(url, '_blank', 'width=600,height=400,scrollbars=yes');
+	}
     </script>
 </head>
 <body>
