@@ -186,7 +186,7 @@ a {
 }
 
 .confirmBtn {
-	background-color: #0c82f5;
+	background-color: #122639;
 	color: white;
 	border: none;
 	padding: 5px 10px;
@@ -196,7 +196,7 @@ a {
 }
 
 .confirmBtn:hover {
-	background-color: #122639;
+	background-color: #0c82f5;
 }
 
 /* 입력란 스타일 */

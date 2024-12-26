@@ -17,10 +17,10 @@ public class TicketDAO {
 	private ResultSet rs = null;
 	// SQL
 	private final String TICKET_MEMBER_GET = "select * from ticket where tid=?";
+	private final String TICKET_CANCEL ="delete from ticket where tid=? and rnum=? and seet=? and ttime=?";
 
-	// 리뷰 결과 조회
+	// 결과 조회
 	public List<TicketVO> getTicketsByMember(MemberVO member) {
-		// 어느 회원이 작성한 리뷰 결과 모음
 		List<TicketVO> ticketList = new ArrayList<TicketVO>();
 		try {
 			conn = JDBCUtil.getConnection();
@@ -45,4 +45,20 @@ public class TicketDAO {
 		}
 		return ticketList;
 	}
+		public void ticketCancel(TicketVO ticket) {		
+			try {
+				conn = JDBCUtil.getConnection();
+				stmt = conn.prepareStatement(TICKET_CANCEL);
+				stmt.setString(1, ticket.getTid());
+				stmt.setString(2, ticket.getRnum());
+				stmt.setString(3, ticket.getSeet());
+				stmt.setString(4, ticket.getTtime());
+				stmt.executeUpdate();
+				System.out.println("DAO "+ticket.getRnum()+" ticketCancel");
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				JDBCUtil.close(stmt, conn);
+			}
+		}
 }

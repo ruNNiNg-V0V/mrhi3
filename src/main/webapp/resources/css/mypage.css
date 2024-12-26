@@ -146,17 +146,17 @@
 }
 
 .confirmBtn {
-    background-color: #0c82f5;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 2px; 
+	background-color: #122639;
+	color: white;
+	border: none;
+	padding: 5px 10px;
+	border-radius: 5px;
+	cursor: pointer;
+	margin: 2px;
 }
 
 .confirmBtn:hover {
-    background-color: #122639;
+	background-color: #0c82f5;
 }
 
 /* 입력란 스타일 */
