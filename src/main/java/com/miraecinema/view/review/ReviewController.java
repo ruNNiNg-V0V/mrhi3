@@ -1,9 +1,8 @@
 package com.miraecinema.view.review;
 
-import java.util.Date;
-
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.miraecinema.biz.member.MemberVO;
 import com.miraecinema.biz.member.impl.MemberDAO;
+import com.miraecinema.biz.review.ReviewService;
 import com.miraecinema.biz.review.ReviewVO;
 import com.miraecinema.biz.review.impl.ReviewDAO;
 
@@ -18,12 +18,16 @@ import com.miraecinema.biz.review.impl.ReviewDAO;
 // 현재 기능 및 파라메터 미리보기 페이지로 사용 중 
 @Controller
 public class ReviewController {
+	
+    @Autowired
+    private ReviewService reviewService;
+	
 	//마이페이지 리뷰내역 리스트 o
 	@RequestMapping("/review.do")
 	public ModelAndView review(MemberVO vo, MemberDAO dao_member, ReviewDAO dao_review, ModelAndView mav, HttpSession session) {
 		MemberVO member = (MemberVO) session.getAttribute("member");
 		vo.setId(member.getId());
-		mav.addObject("review", dao_review.getReviewsByMember(vo));
+		mav.addObject("review", reviewService.getReviewsByMember(vo));
 		mav.setViewName("review.jsp");
 		System.out.println("review.do");
 		return mav;

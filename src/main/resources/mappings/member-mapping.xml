@@ -13,9 +13,9 @@
     </resultMap>
 
     <select id="getMember" resultType="member">
-      <![CDATA[
-      SELECT * FROM MEMBER WHERE ID=#{id} AND PW=#{pw}
-      ]]>
+        <![CDATA[
+        SELECT * FROM MEMBER WHERE ID=#{id} AND PW=#{pw}
+        ]]>
     </select>
 
 </mapper>

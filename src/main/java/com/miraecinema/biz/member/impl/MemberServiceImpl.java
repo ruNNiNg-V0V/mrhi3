@@ -8,11 +8,11 @@ import com.miraecinema.biz.member.MemberVO;
 
 @Service("memberService")
 public class MemberServiceImpl implements MemberService {
-    @Autowired
-    private MemberDAOMybatis memberDAO;
+	@Autowired
+	private MemberDAOMybatis memberDAO;
 
-    @Override
-    public MemberVO getMember(MemberVO vo) {
-        return memberDAO.getMember(vo);
-    }
+	@Override
+	public MemberVO getMember(MemberVO vo) {
+		return memberDAO.getMember(vo);
+	}
 }

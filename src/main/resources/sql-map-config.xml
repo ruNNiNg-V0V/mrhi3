@@ -3,10 +3,15 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<typeAliases>
-		<typeAlias type="com.miraecinema.biz.member.MemberVO" alias="member" />
-	</typeAliases>
-	<mappers>
-		<mapper resource="mappings/member-mapping.xml" />
-	</mappers>
+    <!-- Alias 설정 -->
+    <typeAliases>
+        <typeAlias type="com.miraecinema.biz.member.MemberVO" alias="member" />
+        <typeAlias type="com.miraecinema.biz.review.ReviewVO" alias="review" />
+    </typeAliases>
+    
+    <!-- Sql Mapper 설정 -->
+    <mappers>
+        <mapper resource="mappings/member-mapping.xml" />
+        <mapper resource="mappings/review-mapping.xml" />
+    </mappers>
 </configuration>
