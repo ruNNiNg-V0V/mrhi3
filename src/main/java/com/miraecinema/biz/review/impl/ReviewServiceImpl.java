@@ -21,31 +21,27 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public void insertReivew(ReviewVO review, MemberVO member) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public List<ReviewVO> getReviewsByMovie(ReviewVO vo) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void deleteReview(ReviewVO review) {
-		// TODO Auto-generated method stub
-
+		reviewDAO.deleteReview(review);
 	}
 
 	@Override
 	public void updateReview(ReviewVO review) {
-		// TODO Auto-generated method stub
+		reviewDAO.updateReview(review);
 
 	}
 
 	@Override
 	public ReviewVO getReview(ReviewVO review) {
-		// TODO Auto-generated method stub
-		return null;
+		return reviewDAO.getReview(review);
 	}
 }

@@ -20,4 +20,19 @@ public class ReviewDAOMybatis {
 		review.setRid(vo.getId());
 		return mybatis.selectList("ReviewDAO.getReviewsByMember", review);
 	}
+	
+	public ReviewVO getReview(ReviewVO review){
+		System.out.println("===> Mybatis로 getReview() 기능 처리");
+		return mybatis.selectOne("ReviewDAO.getReview", review);
+	}
+
+	public void updateReview(ReviewVO review){
+		System.out.println("===> Mybatis로 updateReview() 기능 처리");
+		mybatis.update("ReviewDAO.updateReview", review);
+	}
+	
+	public void deleteReview(ReviewVO review){
+		System.out.println("===> Mybatis로 deleteReview() 기능 처리");
+		mybatis.delete("ReviewDAO.deleteReview", review);
+	}
 }

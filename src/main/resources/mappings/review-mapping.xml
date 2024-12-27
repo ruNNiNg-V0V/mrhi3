@@ -4,18 +4,79 @@
 
 <mapper namespace="ReviewDAO">
 
-    <resultMap id="reviewResult" type="review">
-        <result property="rmvname" column="RMVNAME" />
-        <result property="coment" column="COMENT" />
-        <result property="rtime" column="RTIME" />
-        <result property="rname" column="RNAME" />
-        <result property="rid" column="RID" />
-    </resultMap>
+	<resultMap id="reviewResult" type="review">
+		<result property="rmvname" column="RMVNAME" />
+		<result property="coment" column="COMENT" />
+		<result property="rtime" column="RTIME" />
+		<result property="rname" column="RNAME" />
+		<result property="rid" column="RID" />
+	</resultMap>
 
+    <!-- 서브 쿼리 정의 -->
+    <sql id="subQuery">
+        <![CDATA[
+        (SELECT 
+            coment 
+        FROM
+            review
+        WHERE
+            rid = #{rid} 
+            AND rmvname = #{rmvname} 
+            AND rtime = #{rtime})
+        ]]>
+    </sql>
+
+    <!-- 리뷰 가져오기 (member ID 기준) -->
     <select id="getReviewsByMember" resultType="review">
-      <![CDATA[
-      SELECT * FROM REVIEW WHERE RID=#{rid}
-      ]]>
+    	<![CDATA[
+        SELECT 
+        	*
+        FROM 
+        	review 
+        WHERE 
+        	rid = #{rid}
+        ]]>
     </select>
 
+    <!-- 리뷰 가져오기 (서브 쿼리 포함) -->
+    <select id="getReview" resultType="review">
+    	<![CDATA[
+        SELECT 
+        	* 
+        FROM 
+        	review 
+        WHERE 
+        	coment = 
+        ]]>
+        <include refid="subQuery"/>
+    </select>
+
+    <!-- 리뷰 업데이트 (서브 쿼리 포함) -->
+    <update id="updateReview">
+    	<![CDATA[
+        UPDATE 
+        	review 
+        SET 
+            coment = #{coment}, 
+            rtime = #{rtime} 
+        WHERE 
+        	coment = 
+        ]]>
+        <include refid="subQuery"/>
+    </update>
+
+    <!-- 리뷰 삭제 -->
+    <delete id="deleteReview">
+    	<![CDATA[
+        DELETE
+        FROM 
+        	review 
+        WHERE 
+        	rid = #{rid} 
+            AND rmvname = #{rmvname} 
+            AND rtime = #{rtime}
+        ]]>
+    </delete>
+
 </mapper>
+
