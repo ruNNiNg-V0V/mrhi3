@@ -17,5 +17,25 @@
         SELECT * FROM MEMBER WHERE ID=#{id} AND PW=#{pw}
         ]]>
     </select>
+    
+    <!--회원가입-->
+    <insert id="register">
+    	<![CDATA[
+    	INSERT INTO member (id, pw, email, tel, name)
+        VALUES (#{id}, #{pw}, #{email}, #{tel}, #{name})
+        ]]>
+    </insert>
+    
+    <select id="checkId" parameterType="String" resultType="int">
+        <![CDATA[
+        SELECT COUNT(*) FROM member WHERE id = #{id}
+        ]]>
+    </select>
+    
+    <select id="findIdByNameAndEmail" parameterType="map" resultType="String">
+        <![CDATA[
+        SELECT ID FROM MEMBER WHERE NAME = #{name} AND EMAIL = #{email}
+        ]]>
+    </select>
 
 </mapper>

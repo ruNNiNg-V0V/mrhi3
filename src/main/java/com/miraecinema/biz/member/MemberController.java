@@ -21,7 +21,7 @@ public class MemberController {
     }
 
     // 회원가입 처리 메서드 (POST 요청)
-    @PostMapping("/register")
+    @PostMapping("/register.do")
     public ModelAndView register(MemberVO member) {
         ModelAndView mav = new ModelAndView();
         try {
@@ -34,7 +34,7 @@ public class MemberController {
         return mav;
     }
      // 아이디 찾기 처리 메서드 (POST 요청)
-        @PostMapping("/findId")
+        @PostMapping("/findId.do")
         public ModelAndView findId(@RequestParam("name") String name,
                                     @RequestParam("email") String email) {
             ModelAndView mav = new ModelAndView();
