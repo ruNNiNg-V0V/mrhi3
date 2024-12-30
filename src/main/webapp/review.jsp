@@ -9,6 +9,7 @@
 <title>나의후기</title>
 <link rel="stylesheet" href="resources/css/mypage.css">
 <link rel="stylesheet" href="resources/css/include.css">
+<link rel="stylesheet" href="resources/css/confirm.css">
 </head>
 <body>
 <%request.setCharacterEncoding("UTF-8");%>
@@ -43,15 +44,16 @@
 							<form action="reviewDetail.do" method="POST" accept-charset="UTF-8">
 							<table id="review">
 								<tr>
-									<td><input type="text" name="rmvname"
+									<td><input type="text" name="rmvname" id="rmvname"
 										value="${theReview.rmvname }" readonly></td>
-									<td width="40%"><input type="text" name="coment"
+									<td width="40%"><input type="text" name="coment" id="coment"
 										value="${theReview.coment }" readonly></td>
-									<td><input type="text" name="rtime"
+									<td><input type="text" name="rtime" id="rtiem"
 										value="${theReview.rtime }" readonly></td>
 									<td><button type="submit" class="confirmBtn">수정</button>
-										<button id="back" class="confirmBtn" onclick="event.preventDefault(); 
-										location.href='reviewDelete.do?rmvname=${theReview.rmvname}&rtime=${theReview.rtime}'">삭제</button></td>
+										<button id="delete" type="button" class="confirmBtn" onclick="event.preventDefault(); 
+										showCustomConfirm('이 작업은 되돌릴 수 없습니다.<br><div id=\'red\'>리뷰를 삭제하시겠습니까?</div>', '${theReview.rmvname}', '${theReview.rtime}')">삭제</button>
+	
 								</tr>
 							</table>
 							</form>
@@ -62,5 +64,8 @@
 			<!-- 하단 고정 영역 -->
 			<jsp:include page="footer.jsp"></jsp:include>
 		</div>
+		<!-- Confirm 팝업 -->
+    	<jsp:include page="confirm.jsp"></jsp:include>
+    </div>
 </body>
 </html>
