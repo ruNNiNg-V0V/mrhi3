@@ -31,9 +31,9 @@
                         <input type="submit" value="Login" class="btn">
                     </div>
                     <div class="link-group">
-                        <a href="" class="find-id">아이디 찾기</a>
+                        <a href="FindId.jsp" class="find-id">아이디 찾기</a>
                         <span>|</span>
-                        <a href="" class="find-pw">비밀번호 찾기</a>
+                        <a href="FindPassword.jsp" class="find-pw">비밀번호 찾기</a>
                         <span>|</span>
                         <a href="register.jsp" class="register">회원가입</a>
                     </div>
