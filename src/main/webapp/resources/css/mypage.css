@@ -120,14 +120,14 @@
 }
 
 /* 테이블 설정 */
-#booking, #review, #inquiry{
+#booking, #review, #inquiry, #qna{
     width: 100%;
     table-layout: fixed;
     border-collapse: collapse;
     text-align: center;
 }
 
-#booking td, #review td  {
+#booking td, #review td, #qna td {
     padding: 10px;
     word-wrap: break-word;
 }
@@ -138,7 +138,7 @@
 }
 
 
-#booking th, #review th, #inquiry th {
+#booking th, #review th, #inquiry th, #qna th {
     background-color: #122639;
     font-weight: bold;
     color: white;

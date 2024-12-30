@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TicketDAO">
+    <resultMap id="ticketResult" type="ticket">
+        <id property="tcode" column="tcode"/>
+        <result property="rnum" column="rnum"/>
+        <result property="mvstart" column="mvstart"/>
+        <result property="seet" column="seet"/>
+        <result property="tmvname" column="tmvname"/>
+        <result property="ttime" column="ttime"/>
+        <result property="tid" column="tid"/>
+
+    </resultMap>
+    
+    <select id="getTicketsByMember" resultMap="ticketResult">
+        <![CDATA[
+        SELECT * FROM TICKET WHERE TID=#{tid}
+        ]]>
+    </select>
+    
+    <delete id="ticketCancel">
+        <![CDATA[
+        DELETE FROM TICKET 
+        WHERE TID=#{tid} AND RNUM=#{rnum} AND SEET=#{seet} AND TTIME=#{ttime}
+        ]]>
+    </delete>
+</mapper>
