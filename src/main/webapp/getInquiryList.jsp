@@ -22,7 +22,7 @@
 			<!-- 콘텐츠 -->
 			<div class="box3">
 				<div class="contentTitleWrapper">
-					<div class="contentTitle">문의게시판</div>
+					<div class="contentTitle">문의내역</div>
 				</div>
 				<div class="content">
 					<!-- 게시글 목록 -->
