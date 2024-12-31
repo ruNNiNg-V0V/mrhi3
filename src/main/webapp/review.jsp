@@ -19,8 +19,6 @@
 		<!-- 메인 -->
 
 		<div class="main">
-
-			<div class="main">
 				<!-- 공통 사이드바 -->
 				<jsp:include page="sidebar.jsp" />
 
@@ -39,25 +37,35 @@
 								<th>작성시간</th>
 								<th>수정/삭제하기</th>
 							</thead>
-						</table>
-						<c:forEach items="${review }" var="theReview" >
-							<form action="reviewDetail.do" method="POST" accept-charset="UTF-8">
-							<table id="review">
-								<tr>
-									<td><input type="text" name="rmvname" id="rmvname"
-										value="${theReview.rmvname }" readonly></td>
-									<td width="40%"><input type="text" name="coment" id="coment"
-										value="${theReview.coment }" readonly></td>
-									<td><input type="text" name="rtime" id="rtiem"
-										value="${theReview.rtime }" readonly></td>
-									<td><button type="submit" class="confirmBtn">수정</button>
-										<button id="delete" type="button" class="confirmBtn" onclick="event.preventDefault(); 
-										showCustomConfirm('이 작업은 되돌릴 수 없습니다.<br><div id=\'red\'>리뷰를 삭제하시겠습니까?</div>', '${theReview.rmvname}', '${theReview.rtime}')">삭제</button>
-	
-								</tr>
-							</table>
-							</form>
-						</c:forEach>
+    <tbody>
+        <c:forEach items="${review}" var="theReview">
+            <tr>
+<tr>
+    <td>
+        <div class="rmvname">${theReview.rmvname}</div>
+        <input type="hidden" name="rmvname" value="${theReview.rmvname}" form="reviewForm_${theReview.rtime}">
+    </td>
+    <td width="40%">
+        <div class="coment">${theReview.coment}</div>
+        <input type="hidden" name="coment" value="${theReview.coment}" form="reviewForm_${theReview.rtime}">
+    </td>
+    <td>
+        <div>${theReview.rtime}</div>
+        <input type="hidden" name="rtime" value="${theReview.rtime}" form="reviewForm_${theReview.rtime}">
+    </td>
+    <td>
+        <form id="reviewForm_${theReview.rtime}" action="reviewDetail.do" method="POST">
+            <button type="submit" class="confirmBtn">수정</button>
+        </form>
+        <button id="delete" type="button" class="confirmBtn" onclick="event.preventDefault(); 
+        showCustomConfirm('이 작업은 되돌릴 수 없습니다.<br><div id=\'red\'>리뷰를 삭제하시겠습니까?</div>', '${theReview.rmvname}', '${theReview.rtime}')">삭제</button>
+    </td>
+</tr>
+
+        </c:forEach>
+    </tbody>
+</table>
+
 					</div>
 				</div>
 			</div>
