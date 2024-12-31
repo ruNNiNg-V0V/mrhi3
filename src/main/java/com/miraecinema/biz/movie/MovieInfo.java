@@ -4,9 +4,18 @@ package com.miraecinema.biz.movie;
 public class MovieInfo {
 	String rnum;
 	String movieCd;
+	String movieNm;
 
 	public String getRnum() {
 		return rnum;
+	}
+
+	public String getMovieNm() {
+		return movieNm;
+	}
+
+	public void setMovieNm(String movieNm) {
+		this.movieNm = movieNm;
 	}
 
 	public void setRnum(String rnum) {

@@ -29,7 +29,7 @@ public class ReviewDAO {
 	private final String REVIEW_UPDATE = "update review set coment=?, rtime=? where coment = (" + SUB_UPDATE + ")";
 	private final String REVIEW_DELETE ="delete from review where rid=? and rmvname=? and rtime=?";
 
-	private final String REVIEW_INSERT = "insert into review value(?,?,?,?,?)";
+	private final String REVIEW_INSERT = "insert into review values(?,?,?,?,?)";
 	
 	private final String REVIEW_RMVNAME ="select * from review where rmvname=?";
 	private final String REVIEW_MOVIE_GET = "select * from review where rmvname=?";
@@ -38,7 +38,7 @@ public class ReviewDAO {
 	@Autowired	
 		
 	// 리뷰 작성 x
-	public void insertReivew(ReviewVO review, MemberVO member) {
+	public void insertReivew(ReviewVO review) {
 		LocalDateTime now = LocalDateTime.now();
 		DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		try {
@@ -47,7 +47,7 @@ public class ReviewDAO {
 			stmt.setString(1, review.getRmvname());
 			stmt.setString(2, review.getComent());
 			stmt.setString(3, now.format(dateTimeFormat));
-			stmt.setString(4, member.getName());
+			stmt.setString(4, review.getRname());
 			stmt.setString(5, review.getRid());
 			stmt.executeUpdate();
 		} catch (Exception e) {
@@ -59,13 +59,13 @@ public class ReviewDAO {
 	
 	
 	// 영화 리뷰 결과 조회 x
-	public List<ReviewVO> getReviewsByMovie(ReviewVO vo) {
+	public List<ReviewVO> getReviewsByMovie(String movieNm) {
 		// 영화에 작성한 리뷰 결과 모음
 		List<ReviewVO> MvReviewList = new ArrayList<ReviewVO>();
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(REVIEW_MOVIE_GET);
-			stmt.setString(1, vo.getRmvname());
+			stmt.setString(1, movieNm);
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				ReviewVO review = new ReviewVO();

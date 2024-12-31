@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri = "http://java.sun.com/jstl/core_rt" prefix = "c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,89 +9,141 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="resources/js/getThePoster.js"></script>
     <script src="resources/js/getMovieInfo.js?v=<%=System.currentTimeMillis()%>"></script>
-        <style>
+    <style>
         .img-responsive {
             width: 250px; 
-   			height: 330px; 
-       		float: left; 
-   			margin-right: 10px;
-   			flex: 0;
-   		}
-   		
-   		body {
-   			color: #2866A2;
-    		background-image: linear-gradient(to bottom, #010c16, #0c82f5);
-   		}
-   		
-   		div.details {margin-left : 60px; color : white;}
-   		
-   		h2, div.logo {color : white;}
+            height: 330px; 
+            float: left; 
+            margin-right: 10px;
+            flex: 0;
+        }
+        
+        body {
+            color: #2866A2;
+            background-image: linear-gradient(to bottom, #010c16, #0c82f5);
+        }
+        
+        .nav {
+        	display : flex;
+        	justify-content : space-around;
+        	gap : 30px;
+        	margin-left : 10px;
+        }
+        
+        div.details {margin-left: 60px; color: white;}
+        
+        h2, div.logo {color: white;}        
     </style>
 </head>
 
 <body>
+	<jsp:include page="header.jsp"></jsp:include>
     <div class="container">
-        <header class="header">
-            <div class="logo">MIRAE CINEMA</div>
-            <nav class="nav">
-                <a href="#">Home</a>
-                <a href="#">Mypage</a>
-                <a href="#">Login</a>
-            </nav>
-        </header>
-
         <div class="movie-info">
-        	<div class="poster"></div>
+            <div class="poster"></div>
             <div class="details">
                 <h1>영화 제목: </h1>
                 <p>영화 제작 연도: </p>
-              	<p>${movie.rnum}관<p>       
+                <p>${movie.rnum}관<p>       
                 <p>상영 시간: </p>
                 <p>감독: </p>
                 <p>출연진: </p>
-              
+                
                 <button class="reserve-btn">예매하기</button>
             </div>
         </div>
 
         <div class="review-section">
             <h2>후기 남기기</h2>
-            <input id="ratingInput" class="rating-input" type="number" min="0" max="5" step="0.1" placeholder="평점 (0~5.0)">
-            <textarea id="reviewInput" class="review-input" placeholder="리뷰를 작성해 주세요!"></textarea>
+            <form action="insertMovieInfo.do" method="post">
+            <input type="hidden" name="rmvname" value="${movie.movieNm}">
+            <textarea name="coment" class="review-input" placeholder="리뷰를 작성해 주세요!"></textarea>
             <button id="submitReview" class="submit-btn">등록</button>
+            </form>
         </div>
 
         <div>
             <h2>리뷰</h2>
             <div id="reviewsContainer" class="reviews-container">
+            
+            <!-- Backend Data in 리뷰 -->
+                <table>
+    		<thead>
+		        <tr>
+		            <th>Movie</th>
+		            <th>Comment</th>
+		            <th>Time</th>
+		            <th>Name</th>
+		            <th>ID</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <c:forEach var="review" items="${reviews}">
+		            <tr>
+		                <td>${review.rmvname}</td>
+		                <td>${review.coment}</td>
+		                <td>${review.rtime}</td>
+		                <td>${review.rname}</td>
+		                <td>${review.rid}</td>
+		            </tr>
+		        </c:forEach>
+		    </tbody>
+		</table>
             </div>
         </div>
     </div>
+    <jsp:include page="footer.jsp"></jsp:include>
 
     <!-- Main Script -->
     <script>
-        document.addEventListener("DOMContentLoaded", function () {          
+        document.addEventListener("DOMContentLoaded", function () {
+            let reviewCount = 0;
+
             if (typeof getMovieInfo === "function") {
-            	getMovieInfo("${movie.movieCd}");
+                getMovieInfo("${movie.movieCd}");
             }
+
+            // Create Review function
+            function createReview() {
+                var reviewInput = document.getElementById("reviewInput").value.trim();
+                
+                // If the review input is empty, show an alert
+                if (reviewInput === "") {
+                    alert("리뷰를 입력해 주세요!");
+                    return;
+                }
+
+                reviewCount++;
+                
+                // If it's the second submission, ask for confirmation to edit
+                if (reviewCount > 1) {
+                    const confirmation = confirm("리뷰를 변경하시겠습니까?");
+                    if (confirmation) {
+                        editReview(reviewInput);
+                    } else {
+                        return;
+                    }
+                } else {
+                    var newReview = document.createElement("div");
+                    newReview.className = "review";
+                    newReview.innerHTML = '<p>' + reviewInput + '</p>';
+                    document.getElementById("reviewsContainer").appendChild(newReview);
+                    document.getElementById("reviewInput").value = "";
+                }
+            }
+
+            // Edit Review function
+            function editReview(newReviewText) {
+                const reviewDiv = document.querySelector('.reviews-container .review');
+                reviewDiv.innerHTML = '<p>' + newReviewText + '</p>';
+                document.getElementById("reviewInput").value = "";
+            }
+
+            // Attach the event listener to the submit button
             document.getElementById("submitReview").addEventListener("click", function() {
-	            var reviewInput = document.getElementById("reviewInput").value.trim();
-	            var ratingInput = parseFloat(document.getElementById("ratingInput").value.trim());
-	
-	            // 평가 리뷰를 확인한다
-	            if (isNaN(ratingInput) || ratingInput < 0 || ratingInput > 5 || reviewInput == "") {
-	                alert("모든 필드를 알맞게 입력해주세요!");
-	                return;
-	            }
-	
-	            var newReview = document.createElement("div");
-	            newReview.className = "review";
-	            newReview.innerHTML = ratingInput.toFixed(1) + '</p>' + '<p>' + reviewInput + '</p>';
-	            document.getElementById("reviewsContainer").appendChild(newReview);
-	            document.getElementById("reviewInput").value = "";
-	            document.getElementById("ratingInput").value = "";
-	        });
-	    });
-	    </script>
-	</body>
+                createReview();
+            });
+        });
+    </script>
+</body>
 </html>
