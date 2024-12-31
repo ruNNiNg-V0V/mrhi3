@@ -52,6 +52,7 @@ public class InquiryController {
     public String insertInquiry(InquiryVO vo, HttpSession session) {
         MemberVO member = (MemberVO) session.getAttribute("member");
         
+        vo.setQid(member.getId());
         // 디버깅 코드 추가
         System.out.println("QID: " + vo.getQid());
         System.out.println("Title: " + vo.getTitle());

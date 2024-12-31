@@ -14,10 +14,11 @@
         <div class="confirm-content">
             <div id="confirm-message"></div>
             <div id="confirmBox">
-	            <div class="confirm" onclick="deleteForm()">
-	                <span>확인</span></div>
-	            <div class="confirm" onclick="closeConfirm()">
-	                <span>취소</span></div>
+	              <div class="confirm" onclick="deleteForm()">
+                <div class="confirm-text">확인</div>
+            </div>
+            <div class="confirm" onclick="closeConfirm()">
+                <div class="confirm-text">취소</div>
             </div>
         </div>
     </div>

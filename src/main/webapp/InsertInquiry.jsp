@@ -22,7 +22,7 @@
                     <div class="contentTitle">문의하기</div>
                 </div>
                 <div class="content">
-                    <form action="insertInquiry.do" method="post" enctype="multipart/form-data" onsubmit="return validateForm();">
+                    <form action="insertInquiry.do" method="post" onsubmit="return validateForm();">
                         <table border="2" id="inquiry" style="height: 300px;">
                             <tr>
                                 <th class="type">제목</th>
