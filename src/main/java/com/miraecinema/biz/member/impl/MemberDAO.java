@@ -45,4 +45,44 @@ public class MemberDAO {
 		}
 		return member;
 	}
+	//아이디 중복 확인 메소드
+	private final String CHECK_ID = "SELECT COUNT(*) FROM member WHERE id=?";
+
+	public boolean checkIdDuplicate(String id) {
+	    try {
+	        conn = JDBCUtil.getConnection();
+	        stmt = conn.prepareStatement(CHECK_ID);
+	        stmt.setString(1, id);
+	        rs = stmt.executeQuery();
+	        if (rs.next()) {
+	            return rs.getInt(1) > 0;
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        JDBCUtil.close(rs, stmt, conn);
+	    }
+	    return false;
+	}
+	//회원가입 메소드
+	private final String INSERT_MEMBER = "INSERT INTO member (id, pw, email, tel, name) VALUES (?, ?, ?, ?, ?)";
+
+	public void insertMember(MemberVO vo) {
+	    try {
+	        conn = JDBCUtil.getConnection();
+	        stmt = conn.prepareStatement(INSERT_MEMBER);
+	        stmt.setString(1, vo.getId());
+	        stmt.setString(2, vo.getPw());
+	        stmt.setString(3, vo.getEmail());
+	        stmt.setString(4, vo.getTel());
+	        stmt.setString(5, vo.getName());
+	        stmt.executeUpdate();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        JDBCUtil.close(stmt, conn);
+	    }
+	}
+
+
 }
