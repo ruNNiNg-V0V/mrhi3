@@ -1,4 +1,15 @@
+/* 전체 배경 설정 */
+html {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(to bottom, #010c16, #0c82f5);
+}
 
+body {
+	margin: 0;
+}
 
 /*----------------------사이드바 영역--------------------------*/
 .main {

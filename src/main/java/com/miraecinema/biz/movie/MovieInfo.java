@@ -10,6 +10,14 @@ public class MovieInfo {
 		return rnum;
 	}
 
+	public String getMovieNm() {
+		return movieNm;
+	}
+
+	public void setMovieNm(String movieNm) {
+		this.movieNm = movieNm;
+	}
+
 	public void setRnum(String rnum) {
 		this.rnum = rnum;
 	}

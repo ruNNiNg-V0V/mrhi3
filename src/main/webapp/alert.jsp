@@ -12,7 +12,7 @@
         	<div class="alert-content">
             	<div id="alert-massage"></div>
             	<div class="confirm" onclick="submitForm()">
-            		<span>확인</span>
+            		<div class="alert-text">확인</div>
             	</div>
         	</div>
     	</div>
