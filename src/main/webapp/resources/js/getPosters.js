@@ -24,6 +24,7 @@ function getPosters(simplifiedArray) {
                         		<form id="movieForm${i}" action="movieInfo.do" method="POST">
                         			<input type="hidden" name="rnum" value="${rnumList[i]}">
                         			<input type="hidden" name="movieCd" value="${movieCdList[i]}">
+                        			<input type="hidden" name="movieNm" value="${(movieList[i])}">
                         			<a href="javascript:void(0);" onclick="submitForm('movieForm${i}')">
                         				<img src="http://image.tmdb.org/t/p/w500/${json.results[0].poster_path}" class="img-responsive" data-title="${movieList[i]}">
                         			</a>
