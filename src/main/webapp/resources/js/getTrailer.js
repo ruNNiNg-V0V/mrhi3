@@ -1,5 +1,5 @@
 function getTrailer(movieTitle) {
-    const apiKey = 'AIzaSyAgT9KPadiUcNhAdYe_mueEVfNf56z2r6U'; // YouTube Data
+    const apiKey = 'AIzaSyASxAvEDFjwOdAeUEk_JgYzk0Z_uUjdpns'; // YouTube Data
 																// API 키
     
     if (!movieTitle) {

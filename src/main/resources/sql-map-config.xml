@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- Alias 설정 -->
+    <typeAliases>
+        <typeAlias type="com.miraecinema.biz.member.MemberVO" alias="member" />
+        <typeAlias type="com.miraecinema.biz.review.ReviewVO" alias="review" />
+        <typeAlias type="com.miraecinema.biz.ticket.TicketVO" alias="ticket" />
+        <typeAlias type="com.miraecinema.biz.inquiry.InquiryVO" alias="inquiry" />
+    </typeAliases>
+    
+    <!-- Sql Mapper 설정 -->
+    <mappers>
+        <mapper resource="mappings/member-mapping.xml" />
+        <mapper resource="mappings/review-mapping.xml" />
+        <mapper resource="mappings/inquiry-mapping.xml" />
+        <mapper resource="mappings/ticket-mapping.xml" />
+    </mappers>
+</configuration>

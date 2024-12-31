@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MemberDAO">
+
+    <resultMap id="memberResult" type="member">
+        <id property="id" column="ID" />
+        <result property="pw" column="PW" />
+        <result property="email" column="EMAIL" />
+        <result property="tel" column="TEL" />
+        <result property="name" column="NAME" />
+    </resultMap>
+
+    <select id="getMember" resultType="member">
+        <![CDATA[
+        SELECT * FROM MEMBER WHERE ID=#{id} AND PW=#{pw}
+        ]]>
+    </select>
+    
+    <!--회원가입-->
+    <insert id="register">
+    	<![CDATA[
+    	INSERT INTO member (id, pw, email, tel, name)
+        VALUES (#{id}, #{pw}, #{email}, #{tel}, #{name})
+        ]]>
+    </insert>
+    
+    <select id="checkId" parameterType="String" resultType="int">
+        <![CDATA[
+        SELECT COUNT(*) FROM member WHERE id = #{id}
+        ]]>
+    </select>
+    
+    <select id="findIdByNameAndEmail" parameterType="map" resultType="String">
+        <![CDATA[
+        SELECT ID FROM MEMBER WHERE NAME = #{name} AND EMAIL = #{email}
+        ]]>
+    </select>
+
+</mapper>

@@ -1,0 +1,259 @@
+.vector {
+    position: absolute;
+    left: 2.34%;
+    right: 94.82%;
+    top: 3%;
+    bottom: 94.01%;
+    background: #FFFFFF;
+}
+
+h2 {
+   color: white;
+   opacity: 0.6; 
+}
+
+body {
+    margin: auto;
+    width: 100%;
+    min-height: 100vh;
+    background-image: linear-gradient(to bottom, #010c16, #0c82f5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body .header {
+    display: flex;
+    width: 100%;
+    height: 59px;
+    background-color: #122639;
+}
+
+body .header .header-container {
+    width: 100%;
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+body .header .home-button {
+    margin-right: auto;
+}
+
+body .header .home-button img {
+    height: 24px;
+}
+
+body .header .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+body .header .logo img {
+    height: 50px; 
+}
+
+body .header .nav {
+    margin-left: auto;
+}
+
+body .header .login-button a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+body .header .login-button a:hover {
+    color: #0056b3;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    padding-left: 15px;  
+    padding-right: 15px;  
+    padding-top: 50px;
+    background-color: white;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    box-sizing: border-box;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-button {
+    position: relative;
+    display: flex;
+}
+
+.input-button input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding-right: 80px;
+}
+
+.input-button button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.input-button button:hover {
+    background-color: #0056b3;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"] {
+    width: 100%;
+    padding: 8px;
+    border: 1.5px solid #000;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.doublecheck {
+    font-size: 12px;
+    color: red;
+    margin-top: 5px;
+}
+
+.validation-message {
+   margin-top: 5px;
+   font-size: 0.9em;
+}
+
+.validation-message.green {
+   color: green;
+}
+
+.validation-message.red {
+   color: red;
+}
+
+.footer {
+   position: fixed;
+   height: 100px;
+   bottom: 0;
+   width: 100%;
+   border-top: 1px solid #ccc;
+   background-color: white;
+   box-sizing: border-box;
+   padding-left: 20px;
+}
+
+.footer .top-section {
+   display: flex;
+   justify-content: left;
+   gap: 100px;
+   border-bottom: 1px solid #ccc;
+   color: white;
+   padding: 10px 0;
+   font-size: 14px;
+}
+
+.footer .bottom-section {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   color: black;
+   background-color: white;
+   font-size: 14px;
+}
+
+.submit-btn {
+   text-align: center;
+   margin-top: 20px;
+}
+
+.btn {
+   width: 290px;
+   height: 45px;
+   font-size: 20px;
+   border: 0;
+   border-radius: 15px;
+   outline: none;
+   background-color: black;
+   color: white;
+   cursor: pointer;
+   transition: background-color .3s;
+}
+
+.btn:hover {
+   background-color: #333;
+}
+
+.btn:active {
+   background-color: blue; 
+}
+
+.check {
+     width: 100%; 
+     max-width: 300px; 
+     text-align: left; 
+     margin: 0 auto; 
+     font-size: 13px; 
+}
+
+a {
+     font-size: 12px; 
+     text-align: left; 
+     margin: 0 auto; 
+     opacity: .5; 
+}
+
+@media (max-width: 768px) {
+    fieldset {
+        max-width: 90%; 
+    }
+    
+    .btn {
+        max-width: 100%; 
+    }
+
+    body .header .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    body .header .nav {
+        margin-top: 10px;
+    }
+}
