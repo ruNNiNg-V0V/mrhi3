@@ -101,15 +101,16 @@
           
 
             <div class="button-area">
-                <form action="insertTicket.do" method="post" class="button-area" onsubmit="return validateReservation()">
-    				<input type="hidden" name="tmvname" value="${movie.movieNm}">
-    				<input type="hidden" name="rnum" value="${movie.rnum}">
-    				<input type="hidden" name="mvstart" id="selectedTime">
-    				<input type="hidden" name="seet" id="selectedSeat">
-    				<button type="submit" class="reserve-btn" onclick="return validateReservation()">예매하기</button>
-    				<button type="button" class="cancel-btn" onclick="location.href='getMovieList.do'">취소</button>
-				</form>
-            </div>
+    			<form action="insertTicket.do" method="post" class="button-area" onsubmit="return validateAndSetTicket()">
+        		 <input type="hidden" name="tcode" id="tcode">
+        		 <input type="hidden" name="tmvname" value="${movie.movieNm}">
+        		 <input type="hidden" name="rnum" value="${movie.rnum}">
+        		 <input type="hidden" name="mvstart" id="selectedTime">
+        		 <input type="hidden" name="seet" id="selectedSeat">
+        		 <button type="submit" class="reserve-btn">예매하기</button>
+        		 <button type="button" class="cancel-btn" onclick="location.href='getMovieList.do'">취소</button>
+    			</form>
+			</div>
         </div>
 
         <div id="confirmTab" class="tab-content">

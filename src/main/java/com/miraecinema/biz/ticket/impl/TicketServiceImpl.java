@@ -1,8 +1,12 @@
 package com.miraecinema.biz.ticket.impl;
 
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.miraecinema.biz.member.MemberVO;
 import com.miraecinema.biz.ticket.TicketService;
 import com.miraecinema.biz.ticket.TicketVO;
@@ -22,4 +26,10 @@ public class TicketServiceImpl implements TicketService {
     public void ticketCancel(TicketVO ticket) {
         ticketDAO.ticketCancel(ticket);
     }
+
+	@Override
+	public void insertTicket(TicketVO ticket) {
+		// TODO Auto-generated method stub
+		ticketDAO.ticketInsert(ticket);
+	}
 }

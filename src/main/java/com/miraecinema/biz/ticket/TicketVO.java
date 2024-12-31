@@ -7,6 +7,7 @@ public class TicketVO {
 	String seet;
 	String tmvname;
 	String ttime;
+	String tname;
 	String tid;
 
 	public String getTcode() {
@@ -15,6 +16,14 @@ public class TicketVO {
 
 	public void setTcode(String tcode) {
 		this.tcode = tcode;
+	}
+
+	public String getTname() {
+		return tname;
+	}
+
+	public void setTname(String tname) {
+		this.tname = tname;
 	}
 
 	public String getRnum() {

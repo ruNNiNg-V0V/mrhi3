@@ -23,4 +23,9 @@ public class TicketDAOMybatis {
         System.out.println("===> Mybatis로 ticketCancel() 기능 처리");
         mybatis.delete("TicketDAO.ticketCancel", ticket);
     }
+    
+    public void ticketInsert(TicketVO ticket) {
+    	System.out.println("===> Mybatis로 ticketInsert() 기능 처리");
+    	mybatis.insert("TicketDAO.ticketInsert", ticket);
+    }
 }
