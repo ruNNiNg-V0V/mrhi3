@@ -15,7 +15,6 @@ import com.miraecinema.biz.member.MemberService;
 import com.miraecinema.biz.member.MemberVO;
 
 @Controller
-@RequestMapping("/member")
 public class MemberController {
 
     @Autowired

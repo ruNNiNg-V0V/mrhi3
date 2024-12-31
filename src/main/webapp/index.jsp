@@ -12,7 +12,7 @@
 <link rel="stylesheet"
 	href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <link rel="stylesheet" href="resources/css/index.css">
-<link rel="stylesheet" href="resources/css/common.css">
+<link rel="stylesheet" href="resources/css/include.css">
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>

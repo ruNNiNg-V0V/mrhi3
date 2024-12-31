@@ -23,6 +23,7 @@ public class MovieInfoPageController {
         System.out.println("상영관 : " + vo.getRnum());
         System.out.println("영화 코드 : " + vo.getMovieCd());
         System.out.println("영화 이름 : " + decodedMovieNm);
+
         model.addAttribute("movie", vo);
         return "movieInfo.jsp";
     }
