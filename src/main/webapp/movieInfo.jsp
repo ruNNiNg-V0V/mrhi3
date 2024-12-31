@@ -48,8 +48,7 @@
                 <p>상영 시간: </p>
                 <p>감독: </p>
                 <p>출연진: </p>
-              
-                <button class="reserve-btn">예매하기</button>
+                <a href="reserveMovie.do?rnum=${movie.rnum}&movieNm=${movie.movieNm}"><button class="reserve-btn">예매하기</button></a>
             </div>
         </div>
 

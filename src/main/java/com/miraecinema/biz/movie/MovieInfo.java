@@ -21,4 +21,13 @@ public class MovieInfo {
 	public void setMovieCd(String movieCd) {
 		this.movieCd = movieCd;
 	}
+
+	public String getMovieNm() {
+		return movieNm;
+	}
+
+	public void setMovieNm(String movieNm) {
+		this.movieNm = movieNm;
+	}
+	
 }

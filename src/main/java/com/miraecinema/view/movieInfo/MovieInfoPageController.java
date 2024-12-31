@@ -8,15 +8,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.miraecinema.biz.movie.MovieInfo;
 
+import java.net.URLDecoder;
+import java.io.UnsupportedEncodingException;
+
 @Controller
 public class MovieInfoPageController {
-	// POST 방식으로 변경함
-	// 사용자가 파라메터를 통해 접근할 수 있던 문제 해결
-    @RequestMapping(value="/movieInfo.do", method = RequestMethod.POST)
-    public String reviewPage(@ModelAttribute("movie") MovieInfo vo, Model model) {
+    @RequestMapping(value = "/movieInfo.do", method = RequestMethod.POST)
+    public String reviewPage(@ModelAttribute("movie") MovieInfo vo, Model model) throws UnsupportedEncodingException {
+        // 인코딩된 영화 이름 디코딩
+        String decodedMovieNm = URLDecoder.decode(vo.getMovieNm(), "UTF-8");
+        vo.setMovieNm(decodedMovieNm);
+
         System.out.println("영화 상세 정보 페이지 파라메터 세팅");
         System.out.println("상영관 : " + vo.getRnum());
         System.out.println("영화 코드 : " + vo.getMovieCd());
+        System.out.println("영화 이름 : " + decodedMovieNm);
         model.addAttribute("movie", vo);
         return "movieInfo.jsp";
     }
