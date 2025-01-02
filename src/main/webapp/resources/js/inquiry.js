@@ -28,10 +28,10 @@ document.addEventListener('DOMContentLoaded', function() {
 function confirmBtn(message, action) {
     showCustomConfirm(message, false, function(result) {
         if (result) {
-            console.log('confirmBtn console');
+            console.log('true console');
             window.location.href = action;
         } else {
-            console.log('Action canceled');
+            console.log('false canceled');
         }
     });
 }
