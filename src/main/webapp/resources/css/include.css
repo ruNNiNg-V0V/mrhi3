@@ -9,7 +9,11 @@
 
 /* 링크 스타일 초기화 */
 a {
+    color: black;
     text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
 }
 
 /*----------------------헤더 영역--------------------------*/
@@ -59,7 +63,7 @@ a {
 }
 
 .footer .top-section {
-    display: center;
+    display: flex;
     justify-content: left;
     gap: 500px;
     border-bottom: 1px solid #ccc;
