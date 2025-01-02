@@ -19,8 +19,6 @@ import com.miraecinema.biz.review.impl.ReviewDAO;
 @Controller
 public class MovieInfoPageController {
 
-	
-	
     @RequestMapping(value = "/movieInfo.do", method = RequestMethod.POST)
     public String reviewPage(
             @ModelAttribute("movie") MovieInfo vo, 
@@ -40,13 +38,15 @@ public class MovieInfoPageController {
 
         // Log reviews 
         if (reviews != null) {
-            for (ReviewVO review : reviews) {
+        	// 리뷰를 최신순으로 정렬하기
+        	// 로그인된 사용자의 리뷰 나타내기
+            /*for (ReviewVO review : reviews) {
                 System.out.println("(리뷰)영화 이름 : " + review.getRmvname());
                 System.out.println("(리뷰)댓글 : " + review.getComent());
                 System.out.println("(리뷰)댓글 시간 : " + review.getRtime());
                 System.out.println("(리뷰)이름 : " + review.getRname());
                 System.out.println("(리뷰)아이디 : " + review.getRid());
-            }
+            }*/
         } else {
             System.out.println("No reviews found for the movie: " + movieName);
         }
@@ -58,18 +58,21 @@ public class MovieInfoPageController {
     }
     
     @RequestMapping(value = "/insertMovieInfo.do", method = RequestMethod.POST)
-    public String insertReview(ReviewVO review, MovieInfo movie ,HttpSession session) {
-    	MemberVO member = (MemberVO) session.getAttribute("member");
+    public String insertReview(
+    		@ModelAttribute("review") ReviewVO review, 
+    		@ModelAttribute("movie") MovieInfo movie,
+    		HttpSession session,
+    		Model model) {
+        MemberVO member = (MemberVO) session.getAttribute("member");
     	if(member!=null) {
     		review.setRid(member.getId());
         	review.setRname(member.getName());
         	ReviewDAO reviewDAO = new ReviewDAO();
         	reviewDAO.insertReivew(review);
-        	return "movieInfo.do";	
+        	return reviewPage(movie, model, session);
     	}else {
     		return "login.jsp";
     	}
-    	
     	
     }
     
