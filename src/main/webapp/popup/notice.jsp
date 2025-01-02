@@ -28,6 +28,7 @@ p {
 	color: white;
 }
 </style>
+<img src="resources/images/mainlogo2.png">
 <h1>12월 시스템 점검 공지</h1>
 <hr>
 <p>
