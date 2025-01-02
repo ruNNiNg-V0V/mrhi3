@@ -27,7 +27,8 @@ public class TicketDAO {
 			stmt = conn.prepareStatement(TICKET_MEMBER_GET);
 			stmt.setString(1, member.getId());
 			rs = stmt.executeQuery();
-			if (rs.next()) {
+			// 리스트를 받아오기 때문에 반복문을 사용해야 함
+			while (rs.next()) {
 				TicketVO ticket = new TicketVO();
 				ticket.setTcode(rs.getString("TCODE"));
 				ticket.setRnum(rs.getString("RNUM"));
