@@ -16,7 +16,7 @@
         <div class="main2">
             <img src="resources/images/mainlogo2.png" alt="미래시네마">
         </div>
-        <form action="#" method="post">
+        <form action="login.do" method="post">
             <fieldset>
                 <div class="login-container">
                     <div class="input-group">
