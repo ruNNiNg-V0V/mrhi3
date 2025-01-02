@@ -8,6 +8,7 @@
 <title>문의하기</title>
 <link rel="stylesheet" href="resources/css/mypage.css">
 <link rel="stylesheet" href="resources/css/include.css">
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 </head>
 <body>
     <div class="body1">
@@ -22,7 +23,7 @@
                     <div class="contentTitle">문의하기</div>
                 </div>
                 <div class="content">
-                    <form action="insertInquiry.do" method="post" onsubmit="return validateForm();">
+                    <form id="inquiryForm" action="insertInquiry.do" method="post" onsubmit="return validateForm();">
                         <table border="2" id="inquiry" style="height: 300px;">
                             <tr>
                                 <th class="type">제목</th>
@@ -55,24 +56,8 @@
                 </div>
             </div>
         </div>
-        <script>
-            function validateForm() {
-                const title = document.querySelector('input[name="title"]').value.trim();
-                const content = document.querySelector('textarea[name="content"]').value.trim();
-                
-                if (title === "" || content === "") {
-                    alert("제목과 내용을 모두 입력해 주세요.");
-                    return false;
-                }
-                
-                if (!confirm("등록하시겠습니까?")) {
-                    return false;
-                }
-                
-                alert("제출되었습니다!");
-                return true;
-            }
-        </script>
+        <!-- 팝업 -->
+        <jsp:include page="alertAndConfirmPopup.jsp"></jsp:include>
         <!-- 공통 푸터 -->
         <jsp:include page="footer.jsp" />
     </div>
