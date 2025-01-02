@@ -28,6 +28,7 @@ p {
 	color: white;
 }
 </style>
+<img src="resources/images/mainlogo2.png">
 <h1>서비스약관</h1>
 <hr>
 <strong>**제1조 (목적)**</strong><br>
