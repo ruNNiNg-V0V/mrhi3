@@ -32,8 +32,8 @@ inquiryDAO.updateInquiry(inquiry);
 }
 
 @Override
-public List getInquiryList(MemberVO member) {
-return inquiryDAO.getInquiryList(member);
+public List getInquiryList(InquiryVO vo) {
+return inquiryDAO.getInquiryList(vo);
 }
 
 @Override

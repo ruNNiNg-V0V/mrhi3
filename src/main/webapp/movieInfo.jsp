@@ -20,8 +20,17 @@
         
         body {
             color: #2866A2;
+            padding : 0;
             background-image: linear-gradient(to bottom, #010c16, #0c82f5);
         }
+        
+        .header {
+		    display: flex;
+		    justify-content: space-between;
+		    background-color: #122639;
+		    padding: 15px;
+		    padding-top: 20px;		    
+		}
         
         .nav {
         	display : flex;
@@ -32,7 +41,19 @@
         
         div.details {margin-left: 60px; color: white;}
         
-        h2, div.logo {color: white;}        
+        h2, div.logo {color: white;} 
+        
+        table {width: 100%;border-collapse: collapse;}
+	
+	    th, td {text-align: left; padding: 8px; color: white;}
+	
+	    th {background-color: #122639; color: white;}
+
+	    td {border-bottom: 1px dotted #ddd;}      
+        
+        td:nth-child(2), td:nth-child(3) {text-align: right; font-size : 13px;}
+        
+        td:nth-child(1) {font-size: 18px;}
     </style>
 </head>
 
@@ -57,34 +78,26 @@
             <h2>후기 남기기</h2>
             <form action="insertMovieInfo.do" method="post">
             <input type="hidden" name="rmvname" value="${movie.movieNm}">
-            <textarea name="coment" class="review-input" placeholder="리뷰를 작성해 주세요!"></textarea>
+            <input type="hidden" name="rnum" value="${movie.rnum}">
+            <input type="hidden" name="movieCd" value="${movie.movieCd}">
+            <input type="hidden" name="movieNm" value="${movie.movieNm}">
+            <textarea name="coment" class="review-input" placeholder="리뷰를 작성해 주세요!">
+            	${userComment != null ? userComment : ''}
+            </textarea>   
             <button id="submitReview" class="submit-btn">등록</button>
             </form>
         </div>
 
         <div>
             <h2>리뷰</h2>
-            <div id="reviewsContainer" class="reviews-container">
-            
+            <div id="reviewsContainer" class="reviews-container">   
             <!-- Backend Data in 리뷰 -->
                 <table>
-    		<thead>
-		        <tr>
-		            <th>Movie</th>
-		            <th>Comment</th>
-		            <th>Time</th>
-		            <th>Name</th>
-		            <th>ID</th>
-		        </tr>
-		    </thead>
-		    <tbody>
 		        <c:forEach var="review" items="${reviews}">
 		            <tr>
-		                <td>${review.rmvname}</td>
 		                <td>${review.coment}</td>
 		                <td>${review.rtime}</td>
 		                <td>${review.rname}</td>
-		                <td>${review.rid}</td>
 		            </tr>
 		        </c:forEach>
 		    </tbody>
@@ -138,8 +151,6 @@
                 reviewDiv.innerHTML = '<p>' + newReviewText + '</p>';
                 document.getElementById("reviewInput").value = "";
             }
-
-            // Attach the event listener to the submit button
             document.getElementById("submitReview").addEventListener("click", function() {
                 createReview();
             });

@@ -32,8 +32,8 @@ public class InquiryDAOMybatis {
         return mybatis.selectOne("InquiryDAO.getInquiryDetail", vo);
     }
 
-    public List<InquiryVO> getInquiryList(MemberVO member) {
+    public List<InquiryVO> getInquiryList(InquiryVO vo) {
         System.out.println("===> Mybatis로 getInquiryList() 기능 처리");
-        return mybatis.selectList("InquiryDAO.getInquiryList", member);
+        return mybatis.selectList("InquiryDAO.getInquiryList", vo);
     }
 }
