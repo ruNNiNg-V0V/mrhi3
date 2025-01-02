@@ -27,8 +27,9 @@
     
 <insert id="insertInquiry">
     <![CDATA[
-    INSERT INTO INQUIRY (qid, title, category, content, createdAt, cnt)
+    INSERT INTO INQUIRY (seq, qid, title, category, content, createdAt, cnt)
     VALUES (
+    	(SELECT NVL(MAX(SEQ), 0) + 1 FROM INQUIRY),
         #{qid, jdbcType=VARCHAR}, 
         #{title, jdbcType=VARCHAR}, 
         #{category, jdbcType=VARCHAR}, 
