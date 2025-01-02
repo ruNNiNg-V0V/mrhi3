@@ -11,7 +11,7 @@ public interface InquiryService {
 
    void updateInquiry(InquiryVO inquiry);
 
-   List<InquiryVO> getInquiryList(MemberVO member);
+   List<InquiryVO> getInquiryList(InquiryVO inquiry);
 
    InquiryVO getInquiry(InquiryVO inquiry);
 }

@@ -21,9 +21,9 @@ public class InquiryController {
 
     // 마이페이지 문의 내역 리스트
     @RequestMapping(value ="/getInquiryList.do", method = RequestMethod.GET)
-    public ModelAndView getInquiryList(MemberVO vo, ModelAndView mav, HttpSession session) {
+    public ModelAndView getInquiryList(InquiryVO vo, ModelAndView mav, HttpSession session) {
         MemberVO member = (MemberVO) session.getAttribute("member");
-        vo.setId(member.getId());
+        vo.setQid(member.getId());
         mav.addObject("inquiries", inquiryService.getInquiryList(vo));
         mav.setViewName("getInquiryList.jsp");
         System.out.println("getInquiryList.do");
