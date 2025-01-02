@@ -37,7 +37,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${inquiryList}" var="inquiry">
+						<c:forEach items="${inquiries}" var="inquiry">
 							<tr>
 								<td>${inquiry.seq}</td>
 								<td>${inquiry.category}</td>

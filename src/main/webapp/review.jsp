@@ -17,7 +17,6 @@
 		<!-- 헤더 -->
 		<jsp:include page="header.jsp"></jsp:include>
 		<!-- 메인 -->
-
 		<div class="main">
 				<!-- 공통 사이드바 -->
 				<jsp:include page="sidebar.jsp" />
@@ -74,6 +73,5 @@
 		</div>
 		<!-- Confirm 팝업 -->
     	<jsp:include page="confirm.jsp"></jsp:include>
-    </div>
 </body>
 </html>

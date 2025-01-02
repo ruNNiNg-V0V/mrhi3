@@ -39,7 +39,7 @@
 	margin-bottom: 15px;
 }
 
-span {
-	font-size: 15px;
- 	color: white;
+.alert-text {
+    font-size: 15px;
+    color: white;
 }
