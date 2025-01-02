@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Footer</title>
-    <link rel="stylesheet" href="resources/include.css">
+    <link rel="stylesheet" href="resources/css/include.css">
  <script>
  function openPopup(type) {
 	    const url = "/biz/popup/" + type + ".jsp";
