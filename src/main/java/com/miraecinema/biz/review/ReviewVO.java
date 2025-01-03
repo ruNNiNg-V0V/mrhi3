@@ -1,5 +1,8 @@
 package com.miraecinema.biz.review;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class ReviewVO {
 	String rmvname;
 	String coment;
@@ -46,5 +49,9 @@ public class ReviewVO {
 	public void setRid(String rid) {
 		this.rid = rid;
 	}
-
+	
+	public LocalDateTime getCreatedDate() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return LocalDateTime.parse(rtime, formatter);
+	}
 }

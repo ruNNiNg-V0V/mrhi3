@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.miraecinema.biz.member.MemberVO;
 import com.miraecinema.biz.review.ReviewVO;
@@ -20,7 +21,6 @@ public class ReviewDAO {
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 	// SQL
-	/*="insert into review(rmvname, coment, rtiem, ,rname, rid) value(?,?,?,?,?)";*/
 	
 	// 업데이트 레코드를 조회하는 서브쿼리
 	private final String REVIEW_MEMBER_GET = "select * from review where rid=?";
@@ -33,10 +33,10 @@ public class ReviewDAO {
 	
 	private final String REVIEW_RMVNAME ="select * from review where rmvname=?";
 	private final String REVIEW_MOVIE_GET = "select * from review where rmvname=?";
-
+	
 	// 리뷰
 	@Autowired	
-		
+	
 	// 리뷰 작성 x
 	public void insertReivew(ReviewVO review) {
 		LocalDateTime now = LocalDateTime.now();
@@ -56,8 +56,7 @@ public class ReviewDAO {
 			JDBCUtil.close(stmt, conn);
 		}
 	}
-	
-	
+		
 	// 영화 리뷰 결과 조회 x
 	public List<ReviewVO> getReviewsByMovie(String movieNm) {
 		// 영화에 작성한 리뷰 결과 모음
@@ -170,6 +169,36 @@ public class ReviewDAO {
 		}
 		return review;
 	}
-
+	
+	public ReviewVO getReviewByUser(String movieName, String userId) {
+	    ReviewVO review = null;
+	    try {
+	        conn = JDBCUtil.getConnection();
+	        
+	        // SQL query to fetch the review for the specific user and movie
+	        String query = "SELECT * FROM review WHERE rmvname = ? AND rid = ?";
+	        
+	        stmt = conn.prepareStatement(query);
+	        stmt.setString(1, movieName);  // Set the movie name
+	        stmt.setString(2, userId);     // Set the user ID (rid)
+	        
+	        rs = stmt.executeQuery();
+	        
+	        // If a review is found, map the result to a ReviewVO object
+	        if (rs.next()) {
+	            review = new ReviewVO();
+	            review.setRmvname(rs.getString("RMVNAME"));
+	            review.setComent(rs.getString("COMENT"));
+	            review.setRtime(rs.getString("RTIME"));
+	            review.setRname(rs.getString("RNAME"));
+	            review.setRid(rs.getString("RID"));
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        JDBCUtil.close(rs, stmt, conn);
+	    }
+	    return review;
+	}
 }
 
