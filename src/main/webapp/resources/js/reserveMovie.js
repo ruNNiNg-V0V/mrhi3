@@ -55,7 +55,7 @@ function selectSeat(seatNum, event) {
     event = event || window.event;
     
     if (!selectedTime) {
-        alert('상영시간을 선택해주세요.');
+        alert('상영시간을 먼저 선택해주세요.');
         if (event) {
             event.preventDefault();
             event.stopPropagation();
@@ -63,8 +63,11 @@ function selectSeat(seatNum, event) {
         return false;
     }
     
+    // disabled 상태인 좌석 클릭 시에도 알림 표시
     var seatElement = document.querySelector(`input[name="seat"][value="${seatNum}"]`);
-    if (!seatElement || seatElement.disabled) return false;
+    if (!seatElement || seatElement.disabled)  {
+    	return false;
+    }
     
     // 이전에 선택된 모든 좌석의 선택 해제
     document.querySelectorAll('.seat').forEach(seat => {
@@ -196,6 +199,28 @@ function submitReservation() {
     // 폼 제출
     document.getElementById('ticketForm').submit();
 }
+
+function moveToConfirmTab() {
+    if (!validateReservation()) {
+        return false;
+    }
+    
+    // 예매확인 탭으로 전환
+    showTab('confirm', null);
+    
+    // 예매확인 탭 버튼 활성화
+    document.getElementById('confirmTabBtn').classList.add('active');
+    document.getElementById('selectTabBtn').classList.remove('active');
+    
+    // 포스터 업데이트
+    const movieTitle = document.querySelector('.movie-header h2').textContent.trim();
+    const posterContainer = document.querySelector('.movie-info');
+    if (posterContainer) {
+        posterContainer.innerHTML = '';
+        getThePoster(movieTitle);
+    }
+}
+
 
 
 
