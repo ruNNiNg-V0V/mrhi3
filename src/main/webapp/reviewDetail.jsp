@@ -45,7 +45,7 @@
 									value="${inReview.rtime }"></td>
 								<td>
 									<button id="update" type="button" class="confirmBtn"
-										onclick="showCustomAlert('후기를 수정했습니다')">수정</button>
+										onclick="showCustomAlert('후기를 수정했습니다','reviewForm')">수정</button>
 									<button id="back" class="confirmBtn"
 										onclick="event.preventDefault(); location.href='review.do?'">뒤로</button>
 								</td>
@@ -55,10 +55,10 @@
 				</div>
 			</div>
 		</div>
+		<!-- Alert 팝업 -->
+		<jsp:include page="alertAndConfirmPopup.jsp"></jsp:include>
 		<!-- 하단 고정 영역 -->
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
-	<!-- Alert 팝업 -->
-	<jsp:include page="alert.jsp"></jsp:include>
 </body>
 </html>

@@ -28,6 +28,7 @@ p {
 	color: white;
 }
 </style>
+<img src="resources/images/mainlogo2.png">
 <h1>개인정보처리방침</h1>
 <hr>
 <h3>개인정보 처리방침 주요 내용</h3><br><br>

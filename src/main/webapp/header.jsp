@@ -10,6 +10,9 @@
 			<a href="index.do">Home</a>
 		</div>
 		<div>
+			<a href="Information.jsp">Info</a>
+		</div>
+		<div>
 			<%
         	MemberVO member = (MemberVO) session.getAttribute("member");
         	
