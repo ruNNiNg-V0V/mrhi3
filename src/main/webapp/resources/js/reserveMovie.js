@@ -2,20 +2,13 @@ var selectedTime = null;
 var selectedSeat = null;
 
 function showTab(tabName, event) {
-    var tabContents = document.querySelectorAll('.tab-content');
-    for(var i = 0; i < tabContents.length; i++) {
-        tabContents[i].classList.remove('active');
-    }
-    
-    var tabs = document.querySelectorAll('.tab');
-    for(var i = 0; i < tabs.length; i++) {
-        tabs[i].classList.remove('active');
-    }
-    
-    document.getElementById(tabName + 'Tab').classList.add('active');
-    event.target.classList.add('active');
-    
+    // 예매확인 탭 선택 시 검증
     if(tabName === 'confirm') {
+        if(!selectedTime || !selectedSeat) {
+            alert('시간과 좌석을 먼저 선택해주세요.');
+            return false;
+        }
+        
         const movieTitle = document.querySelector('.movie-header h2').textContent.trim();
         const posterContainer = document.querySelector('.movie-info');
         if (posterContainer) {
@@ -23,7 +16,33 @@ function showTab(tabName, event) {
             getThePoster(movieTitle);
         }
     }
+    
+    // 기존 탭 전환 로직
+    var tabContents = document.querySelectorAll('.tab-content');
+    var tabs = document.querySelectorAll('.tab');
+    
+    tabContents.forEach(content => content.classList.remove('active'));
+    tabs.forEach(tab => tab.classList.remove('active'));
+    
+    document.getElementById(tabName + 'Tab').classList.add('active');
+    
+    if(event) {
+        event.target.classList.add('active');
+    } else {
+        document.getElementById('selectTabBtn').classList.add('active');
+    }
 }
+
+// 예매확인 탭 버튼 클릭 이벤트 수정
+document.getElementById('confirmTabBtn').addEventListener('click', function(event) {
+    if(!selectedTime || !selectedSeat) {
+        event.preventDefault();
+        alert('시간과 좌석을 먼저 선택해주세요.');
+        return false;
+    }
+});
+
+
 
 function enableSeatSelection() {
     const seatInputs = document.querySelectorAll('input[name="seat"]');
@@ -63,11 +82,10 @@ function selectSeat(seatNum, event) {
     document.getElementById('selectedCount').textContent = '1';
     
     // 예매확인 탭 업데이트
-    if (window.ticketPrefix) {
-        const ticketNumber = `${window.ticketPrefix}${seatNum}`;
-        document.getElementById('ticketNumber').textContent = ticketNumber;
-        document.getElementById('selectedSeatDisplay').textContent = `${seatNum}`;
-    }
+    const row = seatNum.charAt(0);
+    const number = seatNum.slice(1);
+    document.getElementById('selectedSeatDisplay').textContent = seatNum;
+    document.getElementById('ticketNumber').textContent = `${window.ticketPrefix}${seatNum}`;
     
     return false;
 }
@@ -81,23 +99,22 @@ function checkOnlyOne(element) {
     element.checked = true;
     
     // 시간 선택 저장
-    selectedTime = element.value;
+selectedTime = element.value;
     
-    // 현재 날짜와 시간 생성
+    // 상영 날짜와 시간으로 prefix 생성
     const now = new Date();
     const year = now.getFullYear();
     const month = String(now.getMonth() + 1).padStart(2, '0');
     const day = String(now.getDate()).padStart(2, '0');
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
     
     // 상영관 번호 가져오기
     const rnum = document.querySelector('.movie-header h3').textContent.replace('관', '');
     
-    // 예매번호 prefix 생성 (YYYYMMDDHHMMRR 형식)
-    window.ticketPrefix = `${year}${month}${day}${hours}${minutes}${rnum.padStart(2, '0')}`;
+    // 예매번호 prefix 생성 및 업데이트
+    window.ticketPrefix = `${year}${month}${day}${selectedTime.replace(':', '')}${rnum}`;
     
-    document.getElementById('selectedTime').value = selectedTime;
+    // 예매확인 탭 업데이트
+    document.getElementById('ticketNumber').textContent = window.ticketPrefix;
     document.getElementById('selectedTimeDisplay').textContent = `${year}-${month}-${day} ${selectedTime}`;
     
     // 좌석 활성화
@@ -147,12 +164,7 @@ function validateAndSetTicket() {
         return false;
     }
     
-    // 현재 시간 (예매 시간) 생성
-    const now = new Date();
-    const bookingHours = String(now.getHours()).padStart(2, '0');
-    const bookingMinutes = String(now.getMinutes()).padStart(2, '0');
-    
-    // 상영 날짜와 시간 (2024-12-31 형식)
+    // 상영 날짜와 시간 가져오기
     const screeningDate = document.getElementById('selectedTimeDisplay').textContent.split(' ')[0];
     const screeningTime = selectedTime;  // 선택된 상영 시간
     
@@ -160,15 +172,31 @@ function validateAndSetTicket() {
     const rnum = document.querySelector('.movie-header h3').textContent.replace('관', '');
     const selectedSeat = document.getElementById('selectedSeat').value;
     
-    // 티켓 코드 생성 (상영날짜 + 현재시간 + 상영관번호 + 좌석번호)
-    const ticketCode = `${screeningDate.replace(/-/g, '')}${bookingHours}${bookingMinutes}${rnum}${selectedSeat}`;
+    // 티켓 코드 생성 (상영날짜 + 상영시간 + 상영관번호 + 좌석번호)
+    const ticketCode = `${screeningDate.replace(/-/g, '')}${screeningTime.replace(':', '')}${rnum}${selectedSeat}`;
     document.getElementById('tcode').value = ticketCode;
     
-    // 상영 시간 정보 업데이트 (날짜와 시간 모두 포함)
+    // 상영 시간 정보 업데이트
     document.getElementById('selectedTime').value = `${screeningDate} ${screeningTime}`;
     
     return true;
 }
+
+// 확정버튼으로 예매
+function submitReservation() {
+    if (!validateReservation()) {
+        return false;
+    }
+    
+    // 폼 데이터 설정
+    document.getElementById('tcode').value = document.getElementById('ticketNumber').textContent;
+    document.getElementById('selectedTime').value = document.getElementById('selectedTimeDisplay').textContent;
+    document.getElementById('selectedSeat').value = document.getElementById('selectedSeatDisplay').textContent.split('(')[0];
+    
+    // 폼 제출
+    document.getElementById('ticketForm').submit();
+}
+
 
 
 

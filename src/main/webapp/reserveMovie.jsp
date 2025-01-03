@@ -14,22 +14,18 @@
 <body>
   <div class="wrapper">
     <div class="mirae-cinema">
-    <div class="header">
-    <div class="logo">
-        <img src="resources/images/miraecinema.png" alt="미래시네마" height="25">
-    </div>
-    <nav class="nav">
-        <a href="#">Home</a>
-        <a href="#">Mypage</a>
-        <a href="#">Login</a>
-    </nav>
-</div>
-
+    <jsp:include page="header.jsp"></jsp:include>
     <div class="reservation-system">
+    <form id="ticketForm" action="insertTicket.do" method="post" onsubmit="return validateAndSetTicket()">
+        <input type="hidden" name="tcode" id="tcode">
+        <input type="hidden" name="tmvname" value="${movie.movieNm}">
+        <input type="hidden" name="rnum" value="${movie.rnum}">
+        <input type="hidden" name="mvstart" id="selectedTime">
+        <input type="hidden" name="seet" id="selectedSeat">
         <div class="header-tabs">
-            <button class="tab active" onclick="showTab('select', event)">시간/좌석 선택</button>
-			<button class="tab" onclick="showTab('confirm', event)">예매확인</button>
-        </div>
+    		<button type="button" id="selectTabBtn" class="tab active" onclick="showTab('select', event)">시간/좌석 선택</button>
+    		<button type="button" id="confirmTabBtn" class="tab" onclick="showTab('confirm', event)">예매확인</button>
+		</div>
 
         <div id="selectTab" class="tab-content active">
             
@@ -101,15 +97,8 @@
           
 
             <div class="button-area">
-    			<form action="insertTicket.do" method="post" class="button-area" onsubmit="return validateAndSetTicket()">
-        		 <input type="hidden" name="tcode" id="tcode">
-        		 <input type="hidden" name="tmvname" value="${movie.movieNm}">
-        		 <input type="hidden" name="rnum" value="${movie.rnum}">
-        		 <input type="hidden" name="mvstart" id="selectedTime">
-        		 <input type="hidden" name="seet" id="selectedSeat">
         		 <button type="submit" class="reserve-btn">예매하기</button>
-        		 <button type="button" class="cancel-btn" onclick="location.href='getMovieList.do'">취소</button>
-    			</form>
+        		 <button type="button" class="cancel-btn" onclick="location.href='index.do'">취소</button>
 			</div>
         </div>
 
@@ -133,7 +122,7 @@
         				<table>
                         <tr>
                             <th>예매번호</th>
-                            <td id="ticketNumber">1224</td>
+                            <td id="ticketNumber"></td>
                         </tr>
                         <tr>
                             <th>상영관</th>
@@ -141,40 +130,30 @@
                         </tr>
                         <tr>
                             <th>상영시간</th>
-                            <td id="selectedTimeDisplay">21:00</td>
+                            <td id="selectedTimeDisplay"></td>
                         </tr>
                         <tr>
                             <th>좌석번호</th>
-                            <td id="selectedSeatDisplay">A열 1번(총 1매)</td>
+                            <td id="selectedSeatDisplay"></td>
                         </tr>
                         <tr>
                             <th>예매자명</th>
-                            <td>${userName}</td>
+                            <td>${member.name}</td>
                         </tr>
                     </table>
     						</div>
     	</div>
     			<div class="button-group">
-                <button type="button" class="confirm-btn" onclick="confirmReservation()">확정</button>
-                <button type="button" class="prev-btn" onclick="showTab('select', event)">이전 단계로</button>
-            </div>
-				</div>
+                <button type="button" class="confirm-btn" onclick="submitReservation()">확정</button>
+                <button type="button" class="prev-btn" onclick="showTab('select', null); resetSelection();">이전 단계로</button>
+            	</div>
+			</div>
+		</form>
     </div>
 </div>
 </div>
 </div>
 </div>
-<div class="footer">
-    <div class="top-section">
-        <a href="#">개인정보처리방침</a>
-        <a href="#">서비스약관</a>
-        <a href="#">사이트맵</a>
-    </div>
-    <div class="bottom-section">
-        <span>© 2024 회사 정보</span>
-        <span>문의전화: 02-1234-5678</span>
-    </div>
-
-</div>
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

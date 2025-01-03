@@ -1,3 +1,4 @@
+/* 기본 레이아웃 */
 html, body {
     height: 100%;
     margin: 0;
@@ -9,52 +10,78 @@ body {
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
-    padding: 0;
-    background: linear-gradient(to bottom, #142033, #1a4a9c);
-    padding-top: 20px;
+    background-image: linear-gradient(to bottom, #010c16, #0c82f5);
 }
 
 .wrapper {
     flex: 1;
-    padding-bottom: 120px; /* footer 높이보다 큰 값 */
+    padding-top: 80px; /* 헤더 높이에 맞춰 수정 */
+    padding-bottom: 120px;
 }
 
-.mirae-cinema {
-    flex: 1;
-    max-width: 1200px;
-    margin: 80px auto 150px;  /* footer 높이보다 큰 마진 설정 */
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-}
-
+/* 공통 헤더 */
 .header {
-    background-color: #1e3251;
-    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #122639;
+    padding: 15px;
+    padding-top: 20px;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.header .logo img {
-    height: 30px;
+    height: 25px; /* 로그인 페이지와 동일한 높이 */
 }
 
-.header .nav a {
+.logo {
+    float: left;
+    width: 164px;
+    height: 20px;
+}
+
+.logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav a {
     color: white;
     text-decoration: none;
-    margin-left: 20px;
+    padding-left: 25px;
+    font-size: 14px; 
+}
+
+.nav a:hover {
+    color: gray;
+}
+
+/* 예매 시스템 */
+.mirae-cinema {
+    max-width: 1000px;
+    mid-height: 800px;
+    margin: 30px auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.reservation-system {
+    padding-bottom: 100px;
 }
 
 .header-tabs {
     display: flex;
     padding: 0;
-    background-color: #000;  /* 전체 영역을 검정색으로 설정 */
-    width: 100%;  /* 전체 너비로 확장 */
+    background-color: #000;
+    width: 100%;
 }
 
 .tab {
@@ -63,47 +90,25 @@ body {
     cursor: pointer;
     border: none;
     background: none;
-    font-size: 18px;  
-    font-weight: 500; /* 글씨 두께 추가 */
-}
-
-
-.tab {
-    padding: 15px 30px;
-    color: white;
-    cursor: pointer;
-    background-color: #000;
-    border: none;
-    position: relative;
-    z-index: 1;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .tab.active {
-    background-color: #3498db;  /* 선택된 탭의 배경색을 하늘색으로 설정 */
+    background-color: #2866A2;
 }
 
-.content-area {
-    padding: 20px;
+#selectTab {
+    min-height: 600px;  /* 최소 높이 설정 */
+    position: relative;  /* 버튼 위치 기준점 */
 }
 
-.movie-info {
-    width: 300px;
-    margin: 0 auto;  /* 좌우 중앙 정렬 */
-    text-align: center;  /* 내부 콘텐츠 중앙 정렬 */
-}
-
-.movie-info img {
-    width: 250px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
-
+/* 예매 컨텐츠 영역 */
 .reservation-content {
     display: flex;
     gap: 50px;
-    padding: 30px;
+    padding: 40px;
+    mid-height: 500px;
 }
 
 .left-section {
@@ -116,90 +121,36 @@ body {
     padding-left: 30px;
 }
 
-.time-list button {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    text-align: left;
-    border: 1px solid #ddd;
-    background: white;
-}
-
-.screen {
-    background: #ddd;
+/* 영화 정보 */
+.movie-header {
     text-align: center;
-    padding: 10px;
-    margin: 20px 0;
-}
-
-.seats {
-    display: grid;
-    gap: 10px;
-    justify-content: center;
-}
-
-.seat-row {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    justify-content: flex-start;
-}
-
-.seat {
-    width: 35px;
-    height: 35px;
-    margin: 0 2px;
-}
-
-.button-area {
-    padding: 20px;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.reservation-footer {
-    padding: 20px;
-    background: #f8f9fa;
-    border-top: 1px solid #ddd;
-    text-align: center;
-}
-
-.button-area form button {
-    padding: 10px 30px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 120px;
-    margin: 0 5px;
-}
-
-.button-area form button.reserve-btn {
-    background-color: #3498db !important;
-    color: white !important;
-}
-
-.button-area form button.cancel-btn {
-    background-color: #808080 !important;
-    color: white !important;
-}
-
-
-.theater-group {
     margin-bottom: 20px;
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 4px;
 }
 
+.movie-header h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+    text-align: center;
+}
 
+.movie-header h3 {
+    font-size: 18px;
+    color: #666;
+    text-align: center;
+}
+
+/* 시간 선택 */
 .time-slots {
     display: flex;
     flex-direction: column;
+    align-items: center;  /* 중앙 정렬 */
     gap: 10px;
+    width: 100%;
 }
 
 .time-slot {
-    width: 100%;
+    width: 80%;  /* 너비 조정 */
+    margin: 0 auto;  /* 가운데 정렬 */
 }
 
 .time-slot label {
@@ -210,67 +161,216 @@ body {
     border-radius: 4px;
 }
 
+/* 시간표 제목 수정 */
+h4 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 .time-slot input[type="checkbox"] {
     margin-right: 10px;
 }
 
+/* 좌석 선택 */
+.seat-selection {
+    margin-top: 30px;
+    margin-bottom: 60px;  /* 하단 여백 추가 */
+}
+
+.screen {
+    background: #ddd;
+    text-align: center;
+    padding: 15px;
+    margin: 30px 0;  /* 상하 여백 증가 */
+    width: 80%;  /* 스크린 너비 조정 */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.seats {
+    display: grid;
+    gap: 15px;  /* 좌석 간격 증가 */
+    justify-content: center;
+    padding: 20px;  /* 여백 추가 */
+}
 
 .seat-row {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 5px;  /* 좌우 간격 증가 */
 }
 
 .seat {
     display: inline-block;
-    width: 35px;
-    height: 35px;
+    width: 40px;  /* 35px에서 증가 */
+    height: 40px;  /* 35px에서 증가 */
     border: 1px solid #ddd;
     border-radius: 4px;
     text-align: center;
-    line-height: 35px;
+    line-height: 45px;  /* height와 동일하게 설정 */
     cursor: pointer;
-    position: relative; 
+    position: relative;
     background: white;
+    font-size: 14px;  /* 글자 크기 조정 */
 }
 
 .seat input[type="checkbox"] {
     position: absolute;
     opacity: 0;
-    width: 100%; 
-    height: 100%; 
-    top: 0; 
-    left: 0; 
-    cursor: pointer; 
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
 }
 
 .seat.selected,
-.seat:has(input:checked) { /* 추가 */
+.seat:has(input:checked) {
     background-color: #1a4a9c !important;
     color: white !important;
     border-color: #1a4a9c !important;
 }
 
-.info-header {
-    font-size: 24px;
-    font-weight: normal;  /* bold에서 normal로 변경 */
-    margin-bottom: 20px;
-    color: #666666;
+
+/* 예매 확인 탭 */
+.tab-content {
+    display: none;
+    mid-height: 600px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.confirm-page {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+    min-height: 600px;
+}
+
+/* 예매정보 섹션 조정 */
+.ticket-info {
+    display: flex;
+    align-items: flex-start;
+    padding: 40px;
+    gap: 40px;
+}
+
+/* 버튼 영역 수정 */
+.button-area {
+    position: absolute;  /* 절대 위치로 변경 */
+    bottom: -80px;  /* 확정/이전단계로 버튼과 동일한 위치 */
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px 0;
+    width: 100%;
+}
+
+/* 버튼 스타일 통일 */
+.button-area button,
+.button-group button {
+    padding: 10px 30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 140px;
+    height: 45px;
+    font-size: 16px;
+}
+
+/* form 스타일 수정 */
+.button-area form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+/* 버튼 그룹 수정 */
+.button-group {
+    position: absolute;
+    bottom: -80px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;  /* 버튼 사이 간격 증가 */
+    padding: 20px 0;
+    width: 100%;
+}
+
+.reserve-btn,
+.confirm-btn {
+    background-color: #3498db !important;
+    color: white !important;
+}
+
+.cancel-btn,
+.prev-btn {
+    background-color: #808080 !important;
+    color: white !important;
+}
+
+.movie-info-section {
+    width: 300px;  /* 포스터 영역 너비 증가 */
+    flex-shrink: 0;
+    margin-right: 30px;  /* 간격 증가 */
+}
+
+.movie-info {
+    width: 300px;  /* 포스터 컨테이너 크기 증가 */
+    height: 420px;  /* 비율 유지하며 높이 증가 */
+    margin: 0 auto;
+}
+
+.movie-info .poster {
+    width: 300px;
+    height: 420px;
+}
+
+.movie-info .poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* 에러 메시지 스타일링 */
+.movie-info .alert {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
 }
 
 
-.ticket-info {
-    max-width: 800px;
-    margin: 30px auto;
-    padding: 20px;
+.booking-info-section {
+    flex: 1;
+    min-width: 800px;  /* 예매정보 테이블 최소 너비 증가 */
+    padding-left: 0;
+    padding-top: 50px;
+}
+
+.info-header {
+    font-size: 24px;
+    font-weight: normal;
+    margin-bottom: 30px;  /* 하단 여백 증가 */
+    color: #666666;
+    margin-top: 30px;  /* 상단 여백 추가 */
 }
 
 .info-table {
     width: 100%;
-    border-collapse: separate;  /* collapse에서 separate로 변경 */
+    border-collapse: separate;
     border-spacing: 0;
-    border-radius: 8px;        /* 테이블 전체 모서리 둥글게 */
+    border-radius: 8px;
     overflow: hidden;
+    min-width: 800px;
+    margin-top: 30px;
 }
 
 .info-table tr {
@@ -280,24 +380,25 @@ body {
 .info-table th {
     background-color: #52A5DE;
     color: black;
-    padding: 12px;
+    padding: 12px 25px;
     text-align: left;
-    width: 30%;
-    font-weight: normal;      /* 글자 굵기 얇게 */
-    border: 1px solid #e6e6e6; /* 더 연한 회색으로 변경 */
+    width: 25%;
+    font-weight: normal;
+    border: 1px solid #e6e6e6;
 }
 
 .info-table td {
-    padding: 12px;
+    padding: 12px 25px;
     color: black;
     background-color: white;
-    border: 1px solid #e6e6e6; /* 더 연한 회색으로 변경 */
+    border: 1px solid #e6e6e6;
+    text-align: left;
+    width: 75%;  /* 흰색 영역 너비 증가 */
 }
-
 
 .button-group {
     position: absolute;
-    bottom: 0;
+    bottom: -80px;
     left: 0;
     right: 0;
     display: flex;
@@ -307,114 +408,21 @@ body {
     background-color: transparent;
 }
 
-.button-group button {
+.button-group button,
+.button-area form button {
     padding: 10px 30px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    width: 140px; /* 120px에서 140px로 증가 */
-    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
-}
-
-.confirm-btn {
-    background-color: #3498db !important;
-    color: white !important;
-}
-
-.prev-btn {
-    background-color: #808080 !important;
-    color: white !important;
-}
-
-.tab-content {
-    display: none;
-}
-
-.tab-content.active {
-    display: block;
-}
-
-.confirm-page {
-    position: relative;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 30px;
-    min-height: 500px; /* 최소 높이 설정 */
-}
-
-.ticket-info {
-    display: flex;
-    gap: 40px;
-    width: 100%;
-    padding: 20px;
-    margin-bottom: 80px; /* 버튼을 위한 여백 확보 */
-}
-
-.movie-info-section {
-    width: 40%;
-}
-
-.movie-info-section h3 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.movie-poster {
-    width: 100%;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.movie-poster img {
-    width: 100%;
-    height: auto;
-}
-
-.booking-info-section {
-    flex: 1;
-    padding: 20px;
-    margin: 20px;
-}
-
-
-.preview-info {
-    background: rgba(0,0,0,0.05);
-    padding: 15px;
-    border-radius: 6px;
-    margin-bottom: 20px;
-}
-
-.preview-info p {
-    margin: 5px 0;
-    color: #666;
-}
-
-.detailed-info {
-    margin-top: 20px;
-}
-
-.detailed-info table {
-    width: 100%;
-    border-collapse: separate;  /* collapse에서 separate로 변경 */
-    border-spacing: 0;
-    border: 1px solid #999;
-}
-
-.detailed-info th {
-    background-color: #3498db;
-    color: white;
-    padding: 12px 15px;
-    width: 30%;
-    border: 1px solid #999;
-}
-
-.detailed-info td {
-    padding: 12px 15px;
-    border: 1px solid #999;
+    width: 140px;  /* 버튼 너비 통일 */
+    height: 45px;  /* 버튼 높이 통일 */
+    font-size: 16px;
+    white-space: nowrap;
 }
 
 .title-section {
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .title-label {
@@ -425,63 +433,7 @@ body {
     font-weight: bold;
 }
 
-
-.title-section {
-    margin-bottom: 20px;
-}
-
-
-.movie-poster {
-    position: relative;
-    width: 100%;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.movie-poster img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.movie-header {
-    margin-bottom: 20px;
-}
-
-.movie-header h2 {
-    font-size: 24px;
-    margin-bottom: 8px;
-}
-
-.movie-header h3 {
-    font-size: 18px;
-    color: #666;
-}
-
-.timetable-section h4 {
-    margin-bottom: 15px;
-}
-
-.timetable {
-    width: 100%;
-    border-collapse: collapse;
-    border: 1px solid #ddd;
-}
-
-.timetable td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: center;
-}
-
-.timetable input[type="checkbox"] {
-    margin-right: 8px;
-}
-
-.timetable span {
-    font-size: 14px;
-}
-
+/* 선택된 좌석 정보 */
 .selected-seats-info {
     margin-top: 15px;
     padding: 10px;
@@ -489,43 +441,47 @@ body {
     color: #666;
 }
 
+
+/* 공통 푸터 */
 .footer {
     position: fixed;
+    height: 100px;
     bottom: 0;
-    left: 0;
     width: 100%;
-    background-color: #1e3251;
-    color: white;
-    padding: 20px 0;
-    z-index: 9999;
-    margin: 0;
+    border-top: 1px solid #ccc;
+    background-color: white;
+    box-sizing: border-box;
+    padding-left: 20px;
+    z-index: 1000;
 }
 
 .footer .top-section {
-    text-align: center;    
-    margin-bottom: 15px;
-}
-
-.footer .top-section a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
+    display: flex;
+    justify-content: left;
+    gap: 100px;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    font-size: 14px;
+    color: black; /* 로그인 페이지와 동일하게 변경 */
 }
 
 .footer .bottom-section {
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: black;
+    background-color: white;
+    font-size: 14px;
 }
 
-.footer .bottom-section span {
-    margin: 0 10px;
-    color: #ccc;
+/* 반응형 처리 */
+@media (max-width: 768px) {
+    body {
+        width: 100%;
+    }
+    
+    .footer {
+        position: static;
+    }
 }
-
-.reservation-system {
-    padding-bottom: 100px;  /* footer와의 간격 확보 */
-}
-
-.mirae-cinema {
-    margin-bottom: 0; /* 기존 margin-bottom 제거 */
-}
-
