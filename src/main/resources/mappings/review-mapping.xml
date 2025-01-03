@@ -16,7 +16,7 @@
     <sql id="subQuery">
         <![CDATA[
         (SELECT 
-            coment 
+            rid, coment 
         FROM
             review
         WHERE
@@ -46,7 +46,7 @@
         FROM 
         	review 
         WHERE 
-        	coment = 
+        	(rid, coment) = 
         ]]>
         <include refid="subQuery"/>
     </select>
@@ -60,7 +60,7 @@
             coment = #{coment}, 
             rtime = #{rtime} 
         WHERE 
-        	coment = 
+        	(rid, coment) = 
         ]]>
         <include refid="subQuery"/>
     </update>
