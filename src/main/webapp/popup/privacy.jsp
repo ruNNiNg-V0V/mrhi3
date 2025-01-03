@@ -28,7 +28,7 @@ p {
 	color: white;
 }
 </style>
-<img src="resources/images/mainlogo2.png">
+<img src="${pageContext.request.contextPath}/resources/images/mainlogo2.png" alt="main logo">
 <h1>개인정보처리방침</h1>
 <hr>
 <h3>개인정보 처리방침 주요 내용</h3><br><br>

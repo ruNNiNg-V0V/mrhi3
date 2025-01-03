@@ -28,7 +28,7 @@ p {
 	color: white;
 }
 </style>
-<img src="resources/images/mainlogo2.png">
+<img src="${pageContext.request.contextPath}/resources/images/mainlogo2.png" alt="main logo">
 <h1>이메일 무단수집거부</h1>
 <hr>
 <p>
