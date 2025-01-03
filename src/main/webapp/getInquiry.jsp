@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="resources/css/include.css">
 <link rel="stylesheet" href="resources/css/mypage.css">
 <script src="resources/js/inquiry.js"></script>
+
 </head>
 <body>
     <div class="body1">
@@ -70,14 +71,15 @@
                         </style>
                         <button class="qnaBoardBtn" onclick="updateInquiry()">글수정</button>
                         &nbsp;&nbsp;&nbsp;
-                        <button class="qnaBoardBtn" onclick="confirmBtn('deleteInquiry.do?seq=${inquiry.seq}', '삭제하시겠습니까?');">글삭제</button>
+                        <button class="qnaBoardBtn" onclick="confirmBtn('삭제하시겠습니까?', 'deleteInquiry.do?seq=${inquiry.seq}');">글삭제</button>
                         &nbsp;&nbsp;&nbsp;
                         <button class="qnaBoardBtn" onclick="window.location.href='getInquiryList.do';">글목록</button>
                     </div>
                 </div>
             </div>
         </div>
-
+		<!-- 팝업 -->
+        <jsp:include page="alertAndConfirmPopup.jsp"></jsp:include>
         <!-- 공통 푸터 -->
         <jsp:include page="footer.jsp" />
     </div>

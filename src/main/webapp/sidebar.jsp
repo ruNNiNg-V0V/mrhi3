@@ -5,7 +5,12 @@
         <h1>MyPage</h1>
     </div>
     <div class="box1">
-        <!-- 아직 구현되지 않은 버튼 -->
+         <div class="profile">
+            <img id="profileImage" src="resources/images/default.png">
+             <button id="changeProfileButton" 
+             style="font-size: 12px; padding: 3px 3px; border-radius: 3px; width:30px;"
+             onclick="alert('프로필 이미지 변경 기능은 준비 중입니다!')">변경</button>
+        </div>
         <div>${member.name}님 <br> 환영합니다!</div>
         <button >회원정보 수정</button>
         <button >회원탈퇴</button>

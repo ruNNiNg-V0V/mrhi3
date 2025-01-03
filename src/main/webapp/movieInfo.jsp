@@ -82,7 +82,7 @@
             <input type="hidden" name="movieCd" value="${movie.movieCd}">
             <input type="hidden" name="movieNm" value="${movie.movieNm}">
             <textarea name="coment" class="review-input" placeholder="리뷰를 작성해 주세요!">
-            	${userComment != null ? userComment : ''}
+                 ${existingReview != null ? existingReview.coment : ''}
             </textarea>   
             <button id="submitReview" class="submit-btn">등록</button>
             </form>
