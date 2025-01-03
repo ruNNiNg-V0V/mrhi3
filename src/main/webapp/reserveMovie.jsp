@@ -97,7 +97,7 @@
           
 
             <div class="button-area">
-        		 <button type="submit" class="reserve-btn">예매하기</button>
+        		 <button type="button" class="reserve-btn" onclick="moveToConfirmTab()">예매하기</button>
         		 <button type="button" class="cancel-btn" onclick="location.href='index.do'">취소</button>
 			</div>
         </div>
